@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import QuestionBox from '../../components/dashboard/questionbox/questionbox'
+import {logout} from '../actions/auth'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -11,6 +12,11 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
+    _authActions: {
+      logout: () => {
+        dispatch(logout())
+      }
+    }
   }
 }
 
