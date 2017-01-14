@@ -1,0 +1,30 @@
+.mdl-textfield__input{
+  background-color: #919191;
+  color: #51D9FF
+}
+
+.loginbox {
+  color: #51D9FF;
+  border: 1px solid #42797C;
+  display: inline-block;
+  padding: 5px;
+  max-width: 300px
+}
+
+.mdl-textfield__input {
+  background-color: #333232 !important;
+  background-clip: content-box !important;
+  color: #51D9FF !important;
+  width: 95% !important;
+}
+
+.mdl-textfield__input:hover {
+  background-color: #223334 !important;
+  background-clip: content-box !important;
+}
+
+.mdl-textfield__label {
+  transform: translateY(4px) !important;
+  /*padding: 20px !important;*/
+  color: #42797C !important;
+}
