@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20170114164901) do
 
   create_table "questions", force: :cascade do |t|
     t.string  "body"
-    t.json    "answers"
+    t.json    "data"
     t.integer "user_id"
   end
 

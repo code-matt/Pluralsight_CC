@@ -1,19 +1,13 @@
-# admin
-
 require 'csv'
 require 'json'
 
-# test1 = User.create(
-#   email: 'qq@qq.com',
-#   password: '12345678',
-# )
-
-# test2 = User.create(
-#   email: 'q1@qq.com',
-#   password: '12345678',
-# )
-
 def seed_all_the_things!
+
+  user1 = User.create(
+    email: 'matt@matt.com',
+    password: '12345678',
+  )
+
   options = {
     skip_blanks: true,
     headers: :first_row,
@@ -21,11 +15,13 @@ def seed_all_the_things!
   }
   CSV.foreach("#{Rails.root}/db/cc_questions.csv", options).with_index do |row,i|
     if row.length > 0
-      puts "Question: #{row[0].to_s}"
-      puts "Answer: #{row[1].to_i}"
-      puts "Distractors: #{row[2].split(',').map{ |answer| answer.delete(' ').to_i}}"
-
-      ##todo: create records
+      Question.create(
+        body: row[0].to_s,
+        data: {
+          correct: row[1].to_i,
+          distractors: row[2].split(',').map{ |answer| answer.delete(' ').to_i}
+        },
+        user_id: user1.id)
     end
   end
 end
