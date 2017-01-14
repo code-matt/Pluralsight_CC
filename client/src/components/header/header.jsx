@@ -13,7 +13,7 @@ class Header extends Component {
                 <div className='App-logo'>
                   <img src={logo} className='App-logo' alt='logo' />
                 </div>
-                <h6>Pluralsight CodeChallenge Question App</h6>
+                <strong>Pluralsight CodeChallenge Question App</strong>
               </div>
             </div>
           </div>

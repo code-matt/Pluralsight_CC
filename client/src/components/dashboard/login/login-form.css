@@ -6,9 +6,12 @@
 .loginbox {
   color: #51D9FF;
   border: 1px solid #42797C;
-  display: inline-block;
+  /*display: inline-block;*/
+  margin: auto;
   padding: 5px;
-  max-width: 300px
+  margin-top: 40px;
+  max-width: 300px;
+  text-align: center;
 }
 
 .mdl-textfield__input {

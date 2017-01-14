@@ -66,7 +66,7 @@ class App extends Component {
         </div>
         <div className='container'>
           <div className='row'>
-            <div className='col-md-10 content'>
+            <div className='col-md-12 content'>
               <div>
                 <VisibleHeader store={store} />
               </div>

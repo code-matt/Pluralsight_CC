@@ -39,14 +39,14 @@ class LoginForm extends Component {
   }
   render () {
     return (
-      <div className='loginbox' id='tt1'>
-        <strong>Login to add Questions</strong>
+      <div className='loginbox vertical-center' id='tt1'>
+        <strong>Login to continue..</strong>
         <form>
           <div className='mdl-textfield mdl-js-textfield mdl-textfield--floating-label field'>
             <Textfield
               key={'usernameInput'}
               id='usernameInput'
-              defaultValue='qq@qq.com'
+              defaultValue='matt@matt.com'
               onChange={this.handleValueChange}
               label='Email'
             />

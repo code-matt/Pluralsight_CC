@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import './dashboard.css'
 
-import VisibleLoginForm from '../../redux/containers/login'
+// import VisibleLoginForm from '../../redux/containers/login'
 import QuestionCard from './search/questions/question-card'
-import SearchForm from './search/search-form'
+import VisibleQuestionBox from '../../redux/containers/questionbox'
+// import SearchForm from './search/search-form'
 
 import {notify} from 'react-notify-toast'
 
@@ -47,11 +48,9 @@ class Dashboard extends Component {
   render () {
     return (
       <div className='container'>
-        <div className='App App-header'>
-          <div className='row'>
-            <div className='col-md-12'>
-              <br />
-            </div>
+        <div className='row'>
+          <div className='col-md-12' style={{width: '100%'}}>
+            <VisibleQuestionBox />
           </div>
         </div>
       </div>
