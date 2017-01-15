@@ -24,14 +24,14 @@ function login (email, pass) {
     .then(response => response.json())
     .then(json => {
       setTimeout(() => {
-        notify.show('Logged In', 'success', 2000)
+        notify.show('Logged In', 'success', 1250)
         dispatch(changeData(false, 'loading', 'login'))
         dispatch(loginActionSuccess(json.jwt))
       }, 2500)
     }).catch(error => {
       dispatch(loginActionFail())
       setTimeout(() => {
-        notify.show('Login Failed :(', 'error', 2000)
+        notify.show('Login Failed :(', 'error', 1250)
         dispatch(changeData(false, 'loading', 'login'))
         dispatch(loginActionFail())
       }, 2500)

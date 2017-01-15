@@ -26,10 +26,35 @@
   border: 1px solid #51D9FF;
   height: 400px;
   width: 100%;
-  margin: auto;
-  margin-top: 6px;
+  /*margin: auto;*/
+  /*margin-top: 6px;*/
 }
 
-/*.nav {
-  margin-right: 0 !important
-}*/
+.nav {
+  border-bottom: 1px solid #51D9FF;
+  background-color: #353535;
+}
+
+.nav > .bar {
+  /*display: inline-block;*/
+  /*margin: auto;*/
+  text-align: center;
+}
+
+.mdl-button {
+  background-color: #284A4C !important;
+  font-size: 0.5em !important;
+  margin-left: 18px !important;
+  margin-right: 18px !important;
+  margin-top: 4px !important;
+  margin-bottom: 4px !important;
+}
+
+.mdl-button:hover {
+  background-color: #51D9FF !important;
+}
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+}
