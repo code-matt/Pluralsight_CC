@@ -1,23 +1,41 @@
 import React, {Component} from 'react'
 
 import VisibleLoginForm from '../../redux/containers/login'
+import VisibleQuestionUI from '../../redux/containers/questionUI'
+
+import WelcomeUI from './widgets/welcome/welcome'
 import ProgressWidget from './widgets/progressWidget/progressWidget'
 
 import './dashboard.css'
 import {notify} from 'react-notify-toast'
 import Button from 'react-mdl/lib/Button'
 
-export default class QuestionBox extends Component {
+import { Router, Route, browserHistory } from 'react-router'
+import { Provider } from 'react-redux'
+
+export default class Dashboard extends Component {
   render () {
     return (
       <div className='questionbox'>
         {this.props.token
-          ? <div style={{width: '100%', height: '100%'}}>
-            <Button onClick={() => this.props._authActions.logout()} className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent loginbtn'>
-              Logout
-            </Button>
-            <div style={{height: '100%'}} className='pull-right'>
-              <ProgressWidget />
+          ? <div className='container' style={{width: '100%', height: '400px'}}>
+            <div classame='row' style={{width: '100%', height: '100%'}}>
+              <div className='col-md-8'>
+                <div className='row nav' >
+                  <Button onClick={() => this.props._authActions.logout()} className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent loginbtn'>
+                    Logout
+                  </Button>
+                </div>
+                <div className='row'>
+                  <Router history={browserHistory}>
+                    <Route path='/' component={WelcomeUI} />
+                    <Route path='/:id' component={VisibleQuestionUI} />
+                  </Router>
+                </div>
+              </div>
+              <div className='col-md-4' style={{height: '100%'}}>
+                <ProgressWidget />
+              </div>
             </div>
           </div>
           : <div className='row'>
@@ -29,4 +47,8 @@ export default class QuestionBox extends Component {
       </div>
     )
   }
+}
+
+Dashboard.contextTypes = {
+  store: React.PropTypes.object
 }

@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
-import QuestionComponent from '../../components/dashboard/widgets/questionUI'
+import QuestionComponent from '../../components/dashboard/widgets/questionUI/questionUI'
+import React from 'react'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -12,9 +13,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-const VisibleQuestionComponent = connect(
+const VisibleQuestionUI = connect(
   mapStateToProps,
   mapDispatchToProps
 )(QuestionComponent)
 
-export default VisibleQuestionComponent
+export default VisibleQuestionUI

@@ -20,7 +20,7 @@ import thunk from 'redux-thunk'
 import PluralsightCC from './redux/reducers'
 
 // router
-import { Router, Route, browserHistory } from 'react-router'
+// import { Router, Route, browserHistory } from 'react-router'
 
 const store = createStore(PluralsightCC, applyMiddleware(thunk))
 
@@ -71,10 +71,7 @@ class App extends Component {
                 <VisibleHeader store={store} />
               </div>
               <Provider store={store}>
-                <Router history={browserHistory}>
-                  <Route path='/' component={VisibleDashboard} onEnter={composeEnters(this.railsRedirect)} />
-                  <Route path='*' component={NotFound} onEnter={composeEnters(this.railsRedirect)} />
-                </Router>
+                <VisibleDashboard />
               </Provider>
             </div>
           </div>
@@ -83,6 +80,11 @@ class App extends Component {
     )
   }
 }
+
+                // <Router history={browserHistory}>
+                //   <Route path='/' component={VisibleDashboard} onEnter={composeEnters(this.railsRedirect)} />
+                //   <Route path='*' component={NotFound} onEnter={composeEnters(this.railsRedirect)} />
+                // </Router>
 
 export default App
 

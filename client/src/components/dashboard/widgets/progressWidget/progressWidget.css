@@ -1,7 +1,7 @@
 .progressWidget {
   color: #51D9FF;
   border-left: 1px solid #42797C;
-  padding: 5px;
-  width: 250px;
-  height: 100% !important;
+  /*padding: 5px;*/
+  /*width: 250px;*/
+  height: 100%;
 }
