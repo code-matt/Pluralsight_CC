@@ -7,6 +7,7 @@ const appData = (state, action) => {
         loading: false
       },
       welcome: {
+        page: 0,
         loading: false
       },
       add: {

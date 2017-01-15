@@ -12,3 +12,22 @@
 .loading > .mdl-spinner__circle {
   border-width: 9px;
 }
+
+.history-answer {
+  width: 90%;
+  margin: auto;
+  height: 55px;
+  background-color: #353535;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 1px solid #528C9C;
+}
+
+.history-button {
+  color: #59B8D2;
+  margin: -5px 8px 8px 6px;
+}
+
+.history-button:hover {
+  color: #3ED5FF;
+}
