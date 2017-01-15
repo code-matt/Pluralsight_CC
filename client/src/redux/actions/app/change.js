@@ -1,10 +1,8 @@
-const changeData = (value, fieldId, propName) => ({
+const change = (value, fieldId, propName) => ({
   type: 'CHANGE_DATA',
   fieldId: fieldId,
   value: value,
   propName: propName
 })
 
-export {
-  changeData
-}
+export default change

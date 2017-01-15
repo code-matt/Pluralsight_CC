@@ -6,14 +6,22 @@ const appData = (state, action) => {
         passwordInput: '12345678',
         loading: false
       },
-      search: {
-        searchInput: 'Search Questions',
+      welcome: {
         loading: false
       },
       add: {
-        Question: '',
-        Answer: '',
-        Distractors: '',
+        question: '',
+        answer: '',
+        distractors: '',
+        loading: false
+      },
+      question: {
+        question: '',
+        answers: [],
+        loading: false
+      },
+      search: {
+        query: '',
         loading: false
       }
     }

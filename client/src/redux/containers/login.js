@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import LoginForm from '../../components/dashboard/login/login-form'
 import { login } from '../actions/auth'
-import { changeData } from '../actions/app/changeData'
+import { change } from '../actions/app/change'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -12,8 +12,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     _appActions: {
-      changeData: (value, fieldId, objectPropName) => {
-        dispatch(changeData(value, fieldId, objectPropName))
+      change: (value, fieldId, objectPropName) => {
+        dispatch(change(value, fieldId, objectPropName))
       }
     },
     _authActions: {

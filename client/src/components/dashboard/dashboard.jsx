@@ -23,8 +23,11 @@ export default class Dashboard extends Component {
               <div className='col-md-8'>
                 <div className='row nav'>
                   <div className='bar'>
-                    <Button onClick={() => this.props._authActions.logout()} className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent btn'>
+                    <Button onClick={() => this.props._authActions.logout()} className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent nav-button'>
                       Logout
+                    </Button>
+                    <Button onClick={() => browserHistory.push('/')} className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>
+                      Dashboard
                     </Button>
                     <Button onClick={() => this.props._authActions.logout()} className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>
                       Random Question

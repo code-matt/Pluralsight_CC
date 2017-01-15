@@ -1,0 +1,14 @@
+.welcome-loading {
+  text-align: center;
+  width: 100%;
+  margin-top: 20%
+}
+
+.loading > .mdl-spinner {
+  width: 84px;
+  height: 84px;
+}
+
+.loading > .mdl-spinner__circle {
+  border-width: 9px;
+}

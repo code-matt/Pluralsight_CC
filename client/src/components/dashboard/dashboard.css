@@ -26,8 +26,6 @@
   border: 1px solid #51D9FF;
   height: 400px;
   width: 100%;
-  /*margin: auto;*/
-  /*margin-top: 6px;*/
 }
 
 .nav {
@@ -36,8 +34,6 @@
 }
 
 .nav > .bar {
-  /*display: inline-block;*/
-  /*margin: auto;*/
   text-align: center;
 }
 
@@ -48,6 +44,7 @@
   margin-right: 18px !important;
   margin-top: 4px !important;
   margin-bottom: 4px !important;
+  border-radius: 2px !important;
 }
 
 .mdl-button:hover {

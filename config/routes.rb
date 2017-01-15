@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       mount Knock::Engine => "/knock"
       resources :questions, only: [:create, :index]
+      get '/history', to: 'history#index'
     end
   end
 

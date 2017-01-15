@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import Dashboard from '../../components/dashboard/dashboard'
-import { changeData } from '../actions/app/changeData'
+import { change } from '../actions/app/change'
 import { logout } from '../actions/auth'
 
 const mapStateToProps = (state, ownProps) => {
@@ -19,8 +19,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       }
     },
     _appActions: {
-      changeData: (value, fieldId, objectPropName) => {
-        dispatch(changeData(value, fieldId, objectPropName))
+      change: (value, fieldId, objectPropName) => {
+        dispatch(change(value, fieldId, objectPropName))
       }
     }
   }
