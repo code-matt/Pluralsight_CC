@@ -5,12 +5,13 @@ import React, {Component} from 'react'
 import './questionUI.css'
 
 export default class QuestionComponent extends Component {
+  componentDidMount () {
+    // call backend get question for id
+  }
   render () {
     return (
       <div>
-        {this.props.params.id}
         ima question
-        {this.props.token}
       </div>
     )
   }

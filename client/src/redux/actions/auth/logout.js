@@ -8,7 +8,7 @@ export const logoutActionSuccess = () => ({
 function logout () {
   return function (dispatch) {
     browserHistory.push('/')
-    notify.show('Dispatched logoutActionSuccess', 'success', 2000)
+    notify.show('Logged Out', 'success', 1500)
     dispatch(logoutActionSuccess())
   }
 }

@@ -5,6 +5,8 @@ export default class WelcomeUI extends Component {
     return (
       <div style={{textAlign: 'center'}}>
         Welcome!
+        <br />
+        ***Show answer history.. paginate***
       </div>
     )
   }

@@ -1,9 +1,9 @@
 import { connect } from 'react-redux'
-import QuestionComponent from '../../components/dashboard/pages/questionUI/questionUI'
-import React from 'react'
+import WelcomeComponent from '../../components/dashboard/pages/welcome/welcome'
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    appData: state.appData,
     token: state.token
   }
 }
@@ -13,9 +13,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-const VisibleQuestionUI = connect(
+const VisibleWelcomeComponent = connect(
   mapStateToProps,
   mapDispatchToProps
-)(QuestionComponent)
+)(WelcomeComponent)
 
-export default VisibleQuestionUI
+export default VisibleWelcomeComponent

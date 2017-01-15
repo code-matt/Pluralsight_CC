@@ -2,8 +2,8 @@ import React, {Component} from 'react'
 
 import VisibleLoginForm from '../../redux/containers/login'
 import VisibleQuestionUI from '../../redux/containers/questionUI'
+import WelcomeUI from '../../redux/containers/welcome'
 
-import WelcomeUI from './widgets/welcome/welcome'
 import ProgressWidget from './widgets/progressWidget/progressWidget'
 
 import './dashboard.css'

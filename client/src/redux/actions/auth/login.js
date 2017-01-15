@@ -24,14 +24,14 @@ function login (email, pass) {
     .then(response => response.json())
     .then(json => {
       setTimeout(() => {
-        notify.show('Dispatching loginActionSuccess with the jwt returned by rails', 'success', 2000)
+        notify.show('Logged In', 'success', 2000)
         dispatch(changeData(false, 'loading', 'login'))
         dispatch(loginActionSuccess(json.jwt))
       }, 2500)
     }).catch(error => {
       dispatch(loginActionFail())
       setTimeout(() => {
-        notify.show('Dispatching, loginActionFail. Use qq@qq.com/12345678', 'error', 2000)
+        notify.show('Login Failed :(', 'error', 2000)
         dispatch(changeData(false, 'loading', 'login'))
         dispatch(loginActionFail())
       }, 2500)

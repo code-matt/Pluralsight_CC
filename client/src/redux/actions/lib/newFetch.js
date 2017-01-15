@@ -1,7 +1,6 @@
 import {notify} from 'react-notify-toast'
 
 function newFetch (httpAction, auth = false, urlPath, payload) {
-  notify.show('Dispatched async redux-thunk action to: ' + urlPath, 'success', 2000)
   var headers
   if (auth) {
     headers = {
