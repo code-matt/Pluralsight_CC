@@ -3,7 +3,16 @@ class Api::V1::HistoryController < ApplicationController
   def index
     user = current_user
     answers = Answer.where(user_id: current_user.id)
-    render json: {history: answers}
+    history = []
+    answers.each do |answer|
+      history << {
+        question: Question.find(answer.question_id).data,
+        answer: answer.answer,
+        correct: answer.correct,
+        id: answer.question_id
+      }
+    end
+    render json: {history: history}
   end
 
   def sanitize(input)
