@@ -2,29 +2,22 @@ import { newFetch } from '../lib/newFetch'
 import {notify} from 'react-notify-toast'
 import {change} from '../app'
 
-const setQuestionsAction = (favorites) => ({
-  type: 'SET_QUESTIONS',
-  favorites: favorites
-})
-
-function getQuestions (query) {
+function getQuestion (id, random) {
   return function (dispatch) {
-    dispatch(change(true, 'loading', 'search'))
-    return newFetch('GET', false, '/api/v1/questions?query=' + query)
-    .catch(error => {
-      dispatch(change(false, 'loading', 'false'))
-      notify.show('Something went wrong, are your sure your rails server is running?', 'error', 2000)
-    })
+    dispatch(change(true, 'loading', 'question'))
+    if (random === true) {
+      var url = '/api/v1/questions?id=' + id + '&random=true'
+    } else {
+      var url = '/api/v1/questions?id=' + id
+    }
+    return newFetch('GET', true, url)
     .then(response => response.json())
-    .then(json =>
-      setTimeout(() => {
-        dispatch(change(false, 'loading', 'search'))
-        dispatch(setQuestionsAction(json.favs))
-      }, 2500)
-    )
+    .then(json => {
+      dispatch(change(false, 'loading', 'question'))
+      dispatch(change(json.question, 'question', 'question'))
+    })
   }
 }
 
-export {
-  getQuestions
-}
+export default getQuestion
+

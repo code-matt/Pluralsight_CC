@@ -1,3 +1,9 @@
-.question-box {
-  /*border: 1 white solid;*/
+.question {
+  text-align: center;
+  color: #41E0DB;
+  text-decoration: underline;
+}
+
+.answer {
+  
 }

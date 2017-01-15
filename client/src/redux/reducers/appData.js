@@ -17,8 +17,7 @@ const appData = (state, action) => {
         loading: false
       },
       question: {
-        question: '',
-        answers: [],
+        question: {},
         loading: false
       },
       search: {

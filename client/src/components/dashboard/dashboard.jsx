@@ -29,7 +29,7 @@ export default class Dashboard extends Component {
                     <Button onClick={() => browserHistory.push('/')} className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>
                       Dashboard
                     </Button>
-                    <Button onClick={() => this.props._authActions.logout()} className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>
+                    <Button onClick={() => browserHistory.push('/random')} className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>
                       Random Question
                     </Button>
                     <Button onClick={() => this.props._authActions.logout()} className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>
@@ -43,7 +43,7 @@ export default class Dashboard extends Component {
                 <div className='row'>
                   <Router history={browserHistory}>
                     <Route path='/' component={WelcomeUI} />
-                    <Route path='/:id' component={VisibleQuestionUI} />
+                    <Route path='/random' component={VisibleQuestionUI} />
                   </Router>
                 </div>
               </div>

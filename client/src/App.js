@@ -19,9 +19,6 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import PluralsightCC from './redux/reducers'
 
-// router
-// import { Router, Route, browserHistory } from 'react-router'
-
 const store = createStore(PluralsightCC, applyMiddleware(thunk))
 
 class App extends Component {

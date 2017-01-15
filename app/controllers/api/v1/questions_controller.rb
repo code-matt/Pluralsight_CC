@@ -1,16 +1,17 @@
 class Api::V1::QuestionsController < ApplicationController
-  before_action :authenticate_user, only: [:create]
+  before_action :authenticate_user
   def index
-    query = params["query"]
-    if query.blank?
-      render json: {questions: []}
+    random = params["random"].to_s == 'true' ? true : false
+    id = sanitize(params["id"])
+    if random
+      render json: {question: Question.order('RANDOM()').limit(1)[0]}
     else
-      questions = Favorite.where("body ILIKE ?","%#{sanitize(query)}%")
-      render json: {questions: questions}
+      if id != 0
+        render json: {question: Question.find(id)}
+      else
+        render json: {error: 'id cannot be 0'}
+      end
     end
-  end
-
-  def create
   end
 
   def sanitize(input)
