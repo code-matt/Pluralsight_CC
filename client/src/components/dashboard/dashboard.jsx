@@ -18,8 +18,8 @@ export default class Dashboard extends Component {
     return (
       <div className='questionbox'>
         {this.props.token
-          ? <div className='' style={{width: '100%', height: '400px'}}>
-            <div classame='row' style={{width: '100%', height: '100%'}}>
+          ? <div style={{width: '100%', height: '400px'}}>
+            <div style={{width: '100%', height: '100%'}}>
               <div className='col-md-8'>
                 <div className='row nav'>
                   <div className='bar'>
@@ -44,6 +44,7 @@ export default class Dashboard extends Component {
                   <Router history={browserHistory}>
                     <Route path='/' component={WelcomeUI} />
                     <Route path='/random' component={VisibleQuestionUI} />
+                    <Route path='/question/:id' component={VisibleQuestionUI} />
                   </Router>
                 </div>
               </div>

@@ -4,7 +4,12 @@ class Api::V1::QuestionsController < ApplicationController
     random = params["random"].to_s == 'true' ? true : false
     id = sanitize(params["id"])
     if random
-      render json: {question: Question.order('RANDOM()').limit(1)[0]}
+      question = Question.order('RANDOM()').limit(1)[0]
+      render json: {
+        body: question.data['body'],
+        id: question.id,
+        answers: (question.data['distractors'] << question.data['correct_answer']).shuffle
+      }
     else
       if id != 0
         render json: {question: Question.find(id)}

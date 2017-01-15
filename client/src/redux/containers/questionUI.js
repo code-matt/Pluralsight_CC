@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import QuestionComponent from '../../components/dashboard/pages/questionUI/questionUI'
 import { change } from '../actions/app'
-import { getQuestion } from '../actions/questions'
+import { getQuestion, answerQuestion } from '../actions/questions'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -20,6 +20,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     _questionActions: {
       getQuestion: (id, randomBool) => {
         dispatch(getQuestion(id, randomBool))
+      },
+      answerQuestion: (id, answer) => {
+        dispatch(answerQuestion(id, answer))
       }
     }
   }
