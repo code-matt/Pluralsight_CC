@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 
 import VisibleLoginForm from '../../redux/containers/login'
 import VisibleQuestionUI from '../../redux/containers/questionUI'
+import VisibleAddNewQuestion from '../../redux/containers/addNew'
 import WelcomeUI from '../../redux/containers/welcome'
 
 import ProgressWidget from './widgets/progressWidget/progressWidget'
@@ -29,23 +30,22 @@ export default class Dashboard extends Component {
                     <Button onClick={() => browserHistory.push('/')} className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>
                       Dashboard
                     </Button>
-                    <Button onClick={() => browserHistory.push('/random')} className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>
-                      Random Question
-                    </Button>
                     <Button onClick={() => this.props._authActions.logout()} className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>
                       Search Questions
                     </Button>
-                    <Button onClick={() => this.props._authActions.logout()} className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>
+                    <Button onClick={() => browserHistory.push('/addnew')} className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>
                       Add Question
                     </Button>
                   </div>
                 </div>
-                <div className='row'>
-                  <Router history={browserHistory}>
-                    <Route path='/' component={WelcomeUI} />
-                    <Route path='/random' component={VisibleQuestionUI} />
-                    <Route path='/question/:id' component={VisibleQuestionUI} />
-                  </Router>
+                <div className='container'>
+                  <div className='row'>
+                    <Router history={browserHistory}>
+                      <Route path='/' component={WelcomeUI} />
+                      <Route path='/question/:id' component={VisibleQuestionUI} />
+                      <Route path='/addnew' component={VisibleAddNewQuestion} />
+                    </Router>
+                  </div>
                 </div>
               </div>
               <div className='col-md-4 sidebar' style={{height: '100%'}}>

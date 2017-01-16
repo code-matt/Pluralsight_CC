@@ -13,7 +13,7 @@ class LoginForm extends Component {
   }
 
   handleValueChange (event) {
-    this.props._appActions.changeData(event.target.value, event.target.id, 'login')
+    this.props._appActions.change(event.target.value, event.target.id, 'login')
   }
 
   handleSubmit (event) {

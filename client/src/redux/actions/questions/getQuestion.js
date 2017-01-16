@@ -15,6 +15,9 @@ function getQuestion (id, random) {
     .then(json => {
       dispatch(change(false, 'loading', 'question'))
       dispatch(change(json, 'question', 'question'))
+      if (json.answered) {
+        dispatch(change(json.answered, 'answered', 'question'))
+      }
     })
   }
 }

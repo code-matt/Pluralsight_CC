@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import Spinner from 'react-mdl/lib/Spinner'
 
+import {browserHistory} from 'react-router'
+
 import './questionUI.css'
 
 export default class QuestionComponent extends Component {
@@ -8,6 +10,7 @@ export default class QuestionComponent extends Component {
   constructor () {
     super()
     this.componentWillMount = this.componentWillMount.bind(this)
+    this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
   }
 
   componentWillMount () {
@@ -21,11 +24,8 @@ export default class QuestionComponent extends Component {
   }
 
   componentWillReceiveProps (props) {
-    var url = process.env.NODE_ENV === 'production'
-      ? process.env.REACT_APP_PROD_HOST
-      : 'http://localhost:3001'
-    if (props.appData.question.question.id) {
-      history.pushState('data', '', url + '/question/' + props.appData.question.question.id)
+    if (this.props.location.pathname === '/random' && props.appData.question.question.id) {
+      browserHistory.push('/question/' + props.appData.question.question.id)
     }
   }
 
@@ -67,8 +67,11 @@ function renderQuestionAnswers (answers, id, component) {
 const QuestionAnswer = ({answer, questionID, component}) => {
   return (
     <div className='question-answer'
-      onClick={() => component.props._questionActions.answerQuestion(questionID, answer)
-      }>
+      onClick={() => component.props._questionActions.answerQuestion(
+        questionID,
+        answer,
+        component.props.appData.question.answered)
+    }>
       {answer}
     </div>
   )

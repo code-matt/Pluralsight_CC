@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import LoginForm from '../../components/dashboard/login/login-form'
 import { login } from '../actions/auth'
-import { change } from '../actions/app/change'
+import { change } from '../actions/app'
 
 const mapStateToProps = (state, ownProps) => {
   return {

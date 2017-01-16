@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import Dashboard from '../../components/dashboard/dashboard'
-import { change } from '../actions/app/change'
+import { change } from '../actions/app'
 import { logout } from '../actions/auth'
 
 const mapStateToProps = (state, ownProps) => {
