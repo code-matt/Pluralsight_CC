@@ -14,7 +14,7 @@ function answerQuestion (id, answer, answered) {
       )
       .then(response => response.json())
       .then(json => {
-        dispatch(change(json, 'answered', 'question'))
+        dispatch(change(json.answer, 'answered', 'question'))
         dispatch(addAnswer(json.answer))
         dispatch(change(calculateProgress(getState().history), 'progress', 'piechart'))
       })
