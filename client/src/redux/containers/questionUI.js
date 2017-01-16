@@ -18,8 +18,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       }
     },
     _questionActions: {
-      getQuestion: (id, randomBool) => {
-        dispatch(getQuestion(id, randomBool))
+      getQuestion: (id) => {
+        dispatch(getQuestion(id))
       },
       answerQuestion: (id, answer, answered) => {
         dispatch(answerQuestion(id, answer, answered))

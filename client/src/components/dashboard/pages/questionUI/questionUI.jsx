@@ -10,29 +10,19 @@ export default class QuestionComponent extends Component {
   constructor () {
     super()
     this.componentWillMount = this.componentWillMount.bind(this)
-    this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
   }
 
   componentWillMount () {
     this.props._appActions.change(true, 'loading', 'question')
     this.props._appActions.change(null, 'answered', 'question')
-    if (this.props.params.id) {
-      this.props._questionActions.getQuestion(this.props.params.id, false)
-    } else {
-      this.props._questionActions.getQuestion(1, true)
-    }
-  }
-
-  componentWillReceiveProps (props) {
-    if (this.props.location.pathname === '/random' && props.appData.question.question.id) {
-      browserHistory.push('/question/' + props.appData.question.question.id)
-    }
+    this.props._questionActions.getQuestion(this.props.params.id)
   }
 
   render () {
+    const UI = this.props.appData.question
     return (
       <div>
-        {this.props.appData.question.question.loading
+        {UI.question.loading
           ? <div className='welcome-loading'>
             <h6 style={{paddingBottom: '10px'}}>Loading question...</h6>
             <div className='loading'>
@@ -40,13 +30,13 @@ export default class QuestionComponent extends Component {
             </div>
           </div>
           : <div className='question'>
-            {this.props.appData.question.question.id
+            {UI.question.id
               ? <div>
-                {this.props.appData.question.answered
-                ? this.props.appData.question.answered.correct ? 'Correct answer!' : 'Wrong answer'
+                {UI.answered
+                ? UI.answered.correct ? 'Correct answer!' : 'Wrong answer'
                 : null}
-                <h4>{this.props.appData.question.question.body}</h4>
-                {renderQuestionAnswers(this.props.appData.question.question.answers, this.props.appData.question.question.id, this)}
+                <h4>{UI.question.body}</h4>
+                {renderQuestionAnswers(UI.question.answers, UI.question.id, this)}
               </div>
               : null}
           </div>}

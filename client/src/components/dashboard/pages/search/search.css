@@ -5,3 +5,12 @@
 .search-options {
   text-align: 'center';
 }
+
+.search-result {
+
+}
+
+.search-result:hover {
+  background-color: #36D0CF;
+  cursor: pointer;
+}

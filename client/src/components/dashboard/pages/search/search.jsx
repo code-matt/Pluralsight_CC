@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Spinner from 'react-mdl/lib/Spinner'
 import Checkbox from 'react-mdl/lib/Checkbox'
+import { browserHistory } from 'react-router'
 
 import './search.css'
 
@@ -29,7 +30,9 @@ export default class Search extends Component {
         <input onClick={() => {
           this.props._questionActions.searchQuestions(UI.options)
         }} type='submit' />
-        {renderResults(UI.results,UI.page)}
+        <div style={{textAlign: 'center'}}>
+          {renderResults(UI.results, UI.page)}
+        </div>
         {UI.page !== 0
         ? <div className='pull-left history-button'
           onClick={() => this.props._appActions.change(
@@ -64,7 +67,9 @@ function renderResults (results, page) {
 
 const Result = ({result}) => {
   return (
-    <div className='search-result'>
+    <div onClick={() => {
+      browserHistory.push('/question/' + result.id)
+    }}className='search-result'>
       {result.data.body}
     </div>
   )
