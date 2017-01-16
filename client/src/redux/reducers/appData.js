@@ -30,7 +30,8 @@ const DEFAULT_STATE = {
       MultiplicationType: false,
       SubtractionType: false
     },
-    results: []
+    results: [],
+    page: 0
   },
   piechart: {
     progress: [0, 0]

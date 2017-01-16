@@ -18,37 +18,54 @@ export default class Search extends Component {
   }
 
   render () {
+    const UI = this.props.appData.search
     return (
-      <div className='form-style-8' style={{marginTop: '3px', marginLeft: 'auto', marginRight: 'auto', width: '75%'}}>
-        <h5 style={{textAlign: 'center', margin: '0px', padding: '10px'}}>Search Questions</h5>
+      <div className='form-style-8' style={{padding: '10px 10px',marginTop: '3px', marginLeft: 'auto', marginRight: 'auto', width: '75%'}}>
         <div className='search-options'>
           <Checkbox onChange={this.handleChange} id='AdditionType' label='Addition' ripple />
           <Checkbox onChange={this.handleChange} id='MultiplicationType' label='Multiplication' ripple />
           <Checkbox onChange={this.handleChange} id='SubtractionType' label='Subtraction' ripple />
         </div>
         <input onClick={() => {
-          this.props._questionActions.searchQuestions(this.props.appData.search.options)
+          this.props._questionActions.searchQuestions(UI.options)
         }} type='submit' />
+        {renderResults(UI.results,UI.page)}
+        {UI.page !== 0
+        ? <div className='pull-left history-button'
+          onClick={() => this.props._appActions.change(
+            UI.page - 1,
+            'page',
+            'search'
+          )}><i className='fa fa-arrow-left fa-2x' aria-hidden='true' />
+        </div>
+        : null}
+        {UI.page <= Math.floor((UI.results.length / 10) - 1)
+        ? <div className='pull-right history-button'
+          onClick={() => this.props._appActions.change(
+            UI.page + 1,
+            'page',
+            'search'
+          )}><i className='fa fa-arrow-right fa-2x' aria-hidden='true' />
+        </div>
+        : null}
       </div>
     )
   }
 }
 
-// function renderAnswers (answers, page) {
-//   if (answers.length > 0) {
-//     return answers.map((answer, index) => (
-//       <Answer key={index} answer={answer} />
-//         )).splice(page === 0 ? 0 : page * 5, 5)
-//   }
-//   else return []
-// }
+function renderResults (results, page) {
+  if (results.length > 0) {
+    return results.map((result, index) => (
+      <Result key={index} result={result} />
+        )).splice(page === 0 ? 0 : page * 10, 10)
+  }
+  else return []
+}
 
-// const Answer = ({answer}) => {
-//   return (
-//     <div className='history-answer'>
-//       Question: {answer.question.body} Your answer: {answer.answer}
-//       <br />
-//       correct?: {answer.correct ? 'true' : 'false'}
-//     </div>
-//   )
-// }
+const Result = ({result}) => {
+  return (
+    <div className='search-result'>
+      {result.data.body}
+    </div>
+  )
+}
