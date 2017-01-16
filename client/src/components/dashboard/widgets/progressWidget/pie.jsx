@@ -39,7 +39,7 @@ export var Pie = React.createClass({
             fill={colors[sliceIndex % colorsLength]}
             stroke={self.props.stroke}
             strokeWidth={self.props.strokeWidth}
-            progress={self.props.progress} />
+            data={self.props.data} />
         }) }
 
       </svg>
@@ -56,11 +56,8 @@ var Slice = React.createClass({
     }
   },
   componentWillReceiveProps: function (nextProps) {
-    if (this.props.progress === []) {
-      this.setState({ path: '' })
-      this.animate()
-    } else if (this.props.progress !== nextProps.progress) {
-      this.setState({ path: '' })
+    if (this.props.data !== nextProps.data) {
+      this.setState({path: ''})
       this.animate()
     }
   },
