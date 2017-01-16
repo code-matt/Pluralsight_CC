@@ -21,7 +21,7 @@ export default class Search extends Component {
   render () {
     const UI = this.props.appData.search
     return (
-      <div className='form-style-8' style={{padding: '10px 10px',marginTop: '3px', marginLeft: 'auto', marginRight: 'auto', width: '75%'}}>
+      <div className='form-style-8' style={{padding: '10px 10px',marginTop: '20px', marginLeft: 'auto', marginRight: 'auto', width: '75%'}}>
         <div className='search-options'>
           <Checkbox onChange={this.handleChange} id='AdditionType' label='Addition' ripple />
           <Checkbox onChange={this.handleChange} id='MultiplicationType' label='Multiplication' ripple />
@@ -30,7 +30,7 @@ export default class Search extends Component {
         <input onClick={() => {
           this.props._questionActions.searchQuestions(UI.options)
         }} type='submit' />
-        <div style={{textAlign: 'center'}}>
+        <div style={{marginTop: '10px',textAlign: 'center'}}>
           {renderResults(UI.results, UI.page)}
         </div>
         {UI.page !== 0

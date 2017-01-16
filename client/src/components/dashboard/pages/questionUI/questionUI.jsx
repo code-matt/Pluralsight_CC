@@ -33,7 +33,7 @@ export default class QuestionComponent extends Component {
             {UI.question.id
               ? <div>
                 {UI.answered
-                ? UI.answered.correct ? 'Correct answer!' : 'Wrong answer'
+                ? UI.answered.correct ? 'You answered correctly!' : 'You answered wrong.'
                 : null}
                 <h4>{UI.question.body}</h4>
                 {renderQuestionAnswers(UI.question.answers, UI.question.id, this)}

@@ -29,7 +29,7 @@ function getHistory () {
   }
 }
 
-function calculateProgress (history) {
+export function calculateProgress (history) {
   var correct = 0
   var incorrect = 0
   history.forEach((q) => {

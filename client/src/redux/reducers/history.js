@@ -4,6 +4,9 @@ const history = (state = [], action) => {
   //   state = localStorage.token || null
   // }
   switch (action.type) {
+    case 'ADD_NEW_ANSWER':
+    // localStorage.token = action.token
+      return state.concat(action.answer)
     case 'GET_HISTORY_SUCCESS':
       // localStorage.token = action.token
       return action.history
