@@ -31,7 +31,7 @@ class LoginForm extends Component {
       )
     } else {
       return (
-        <Button onClick={this.handleSubmit} className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent loginbtn'>
+        <Button onClick={this.handleSubmit} className='loginbtn'>
           Login
         </Button>
       )
@@ -42,26 +42,27 @@ class LoginForm extends Component {
       <div className='loginbox vertical-center' id='tt1'>
         <strong>Login to continue..</strong>
         <form>
-          <div className='mdl-textfield mdl-js-textfield mdl-textfield--floating-label field'>
+          <div className='field'>
             <Textfield
               key={'usernameInput'}
               id='usernameInput'
               defaultValue='matt@matt.com'
               onChange={this.handleValueChange}
               label='Email'
+              floatingLabel
             />
-            <label className='mdl-textfield__label' htmlFor='usernameInput'>Email</label>
           </div>
           <br />
-          <div className='mdl-textfield mdl-js-textfield mdl-textfield--floating-label field'>
+          <div className='field'>
             <Textfield
               key={'passwordInput'}
               id='passwordInput'
               defaultValue='12345678'
               onChange={this.handleValueChange}
               label='Password'
+              floatingLabel
+              type='password'
             />
-            <label className='mdl-textfield__label' htmlFor='passwordInput'>Password</label>
           </div>
           {
             this.isLoading()

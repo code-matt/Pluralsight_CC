@@ -19,9 +19,10 @@ export default class WelcomeUI extends Component {
   }
 
   render () {
+    const UI = this.props.appData.welcome
     return (
       <div>
-        {this.props.appData.welcome.loading
+        {UI.loading
           ? <div className='welcome-loading'>
             <h6 style={{paddingBottom: '10px'}}>Loading history..</h6>
             <div className='loading'>
@@ -33,22 +34,22 @@ export default class WelcomeUI extends Component {
             <div>
               {renderAnswers(
                 this.props.history,
-                this.props.appData.welcome.page)}
+                UI.page)}
             </div>
             <div className='page-buttons'>
-              {this.props.appData.welcome.page !== 0
+              {UI.page !== 0
               ? <div className='pull-left history-button'
                 onClick={() => this.props._appActions.change(
-                  this.props.appData.welcome.page - 1,
+                  UI.page - 1,
                   'page',
                   'welcome'
                 )}><i className='fa fa-arrow-left fa-2x' aria-hidden='true' />
               </div>
               : null}
-              {this.props.appData.welcome.page <= Math.floor((this.props.history.length / 5) - 1)
+              {UI.page <= Math.floor((this.props.history.length / 5) - 1)
               ? <div className='pull-right history-button'
                 onClick={() => this.props._appActions.change(
-                  this.props.appData.welcome.page + 1,
+                  UI.page + 1,
                   'page',
                   'welcome'
                 )}><i className='fa fa-arrow-right fa-2x' aria-hidden='true' />
@@ -74,9 +75,7 @@ function renderAnswers (answers, page) {
 const Answer = ({answer}) => {
   return (
     <div className='history-answer'>
-      Question: {answer.question.body}
-      <br />
-      Your answer: {answer.answer}
+      Question: {answer.question.body} Your answer: {answer.answer}
       <br />
       correct?: {answer.correct ? 'true' : 'false'}
     </div>

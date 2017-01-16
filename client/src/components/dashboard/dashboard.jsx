@@ -20,37 +20,35 @@ export default class Dashboard extends Component {
       <div className='questionbox'>
         {this.props.token
           ? <div style={{width: '100%', height: '400px'}}>
-            <div style={{width: '100%', height: '100%'}}>
-              <div className='col-md-8'>
-                <div className='row nav'>
-                  <div className='bar'>
-                    <Button onClick={() => this.props._authActions.logout()} className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent nav-button'>
-                      Logout
-                    </Button>
-                    <Button onClick={() => browserHistory.push('/')} className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>
-                      Dashboard
-                    </Button>
-                    <Button onClick={() => this.props._authActions.logout()} className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>
-                      Search Questions
-                    </Button>
-                    <Button onClick={() => browserHistory.push('/addnew')} className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>
-                      Add Question
-                    </Button>
-                  </div>
-                </div>
-                <div className='container'>
-                  <div className='row'>
-                    <Router history={browserHistory}>
-                      <Route path='/' component={WelcomeUI} />
-                      <Route path='/question/:id' component={VisibleQuestionUI} />
-                      <Route path='/addnew' component={VisibleAddNewQuestion} />
-                    </Router>
-                  </div>
+            <div className='col-md-8'>
+              <div className='row nav'>
+                <div className='bar'>
+                  <Button onClick={() => this.props._authActions.logout()} className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent nav-button'>
+                    Logout
+                  </Button>
+                  <Button onClick={() => browserHistory.push('/')} className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>
+                    Dashboard
+                  </Button>
+                  <Button onClick={() => this.props._authActions.logout()} className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>
+                    Search Questions
+                  </Button>
+                  <Button onClick={() => browserHistory.push('/addnew')} className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>
+                    Add Question
+                  </Button>
                 </div>
               </div>
-              <div className='col-md-4 sidebar' style={{height: '100%'}}>
-                <ProgressWidget />
+              <div className='container'>
+                <div className='row'>
+                  <Router history={browserHistory}>
+                    <Route path='/' component={WelcomeUI} />
+                    <Route path='/question/:id' component={VisibleQuestionUI} />
+                    <Route path='/addnew' component={VisibleAddNewQuestion} />
+                  </Router>
+                </div>
               </div>
+            </div>
+            <div className='col-md-4 sidebar' style={{height: '100%'}}>
+              <ProgressWidget />
             </div>
           </div>
           : <div className='row'>
