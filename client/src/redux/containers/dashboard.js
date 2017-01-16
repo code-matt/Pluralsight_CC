@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import Dashboard from '../../components/dashboard/dashboard'
 import { change } from '../actions/app'
 import { logout } from '../actions/auth'
-import { getHistory } from '../actions/history'
+import { getHistory, calculateProgress } from '../actions/history'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -27,6 +27,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     _historyActions: {
       getHistory: () => {
         dispatch(getHistory())
+      },
+      calculateProgress: (history) => {
+        dispatch(calculateProgress(history))
       }
     }
   }

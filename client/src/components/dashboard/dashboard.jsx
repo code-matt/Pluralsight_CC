@@ -13,6 +13,7 @@ import './dashboard.css'
 import Button from 'react-mdl/lib/Button'
 
 import { Router, Route, browserHistory } from 'react-router'
+import { calculateProgress } from '../../redux/actions/history'
 
 export default class Dashboard extends Component {
   
@@ -22,8 +23,15 @@ export default class Dashboard extends Component {
   }
 
   componentWillMount () {
-    this.props._appActions.change(true, 'loading', 'welcome')
-    this.props._historyActions.getHistory()
+    if (this.props.history.length === 0) {
+      this.props._appActions.change(true, 'loading', 'welcome')
+      this.props._historyActions.getHistory()
+    } else {
+      this.props._appActions.change(
+        calculateProgress(this.props.history),
+        'progress',
+        'piechart')
+    }
   }
   render () {
     return (
@@ -59,7 +67,7 @@ export default class Dashboard extends Component {
               </div>
             </div>
             <div className='col-md-4 sidebar' style={{height: '100%'}}>
-              <ProgressWidget progress={this.props.appData.piechart.progress} />
+              <ProgressWidget history={this.props.history} appData={this.props.appData} progress={this.props.appData.piechart.progress} />
             </div>
           </div>
           : <div className='row'>
