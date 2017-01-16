@@ -20,12 +20,26 @@ function getHistory () {
       setTimeout(() => {
         dispatch(change(false, 'loading', 'welcome'))
         dispatch(getHistorySuccess(json.history))
+        dispatch(change(calculateProgress(json.history), 'progress', 'piechart'))
       }, 1250)
     }).catch(error => {
       notify.show('failed..', 'error', 1250)
       dispatch(getHistoryFail())
     })
   }
+}
+
+function calculateProgress (history) {
+  var correct = 0
+  var incorrect = 0
+  history.forEach((q) => {
+    if (q.correct) {
+      correct++
+    } else {
+      incorrect++
+    }
+  })
+  return [correct, incorrect]
 }
 
 export default getHistory

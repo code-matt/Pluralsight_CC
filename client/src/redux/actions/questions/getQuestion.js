@@ -1,5 +1,4 @@
 import { newFetch } from '../lib/newFetch'
-import {notify} from 'react-notify-toast'
 import {change} from '../app'
 
 function getQuestion (id, random) {

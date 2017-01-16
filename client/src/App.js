@@ -4,14 +4,11 @@ import React, { Component } from 'react'
 import VisibleDashboard from './redux/containers/dashboard'
 import VisibleHeader from './redux/containers/header'
 
-// regular react components
-import {NotFound} from './components/not-found/notfound'
-
 //css
 import './App.css'
 
 // notifications
-import Notifications, {notify} from 'react-notify-toast'
+import Notifications from 'react-notify-toast'
 
 // redux
 import { Provider } from 'react-redux'
@@ -78,27 +75,4 @@ class App extends Component {
   }
 }
 
-                // <Router history={browserHistory}>
-                //   <Route path='/' component={VisibleDashboard} onEnter={composeEnters(this.railsRedirect)} />
-                //   <Route path='*' component={NotFound} onEnter={composeEnters(this.railsRedirect)} />
-                // </Router>
-
 export default App
-
-function composeEnters (...hooks) {
-  return function onEnter (nextState, replace, executeTransition) {
-    (function executeHooksSynchronously (remainingHooks) {
-      if (!remainingHooks.length) return executeTransition()
-      let nextHook = remainingHooks[0]
-      if (nextHook.length >= 3) {
-        nextHook.call(this, nextState, replace, () => {
-          executeHooksSynchronously(remainingHooks.slice(1))
-        })
-      } else {
-        nextHook.call(this, nextState, replace)
-        executeHooksSynchronously(remainingHooks.slice(1))
-      }
-    })(hooks)
-  }
-}
-

@@ -3,5 +3,24 @@
   border-left: 1px solid #42797C;
   /*padding: 5px;*/
   /*width: 250px;*/
-  height: 100%;
+  /*height: 100%;*/
+}
+
+svg {
+  display: inline-block;
+  vertical-align: middle;
+	transform-origin: 50% 50%;
+	animation: scale .6s;
+  margin: 10px;
+	
+  text {
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bolder;
+    font-size: 12px;
+  }
+}
+
+@keyframes scale {
+	from { transform: scale(.5); }
+	to { transform: scale(1); }
 }

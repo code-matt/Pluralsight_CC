@@ -10,10 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170114164901) do
+ActiveRecord::Schema.define(version: 20170116165718) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addition_types", force: :cascade do |t|
+    t.integer "question_id"
+  end
 
   create_table "answers", force: :cascade do |t|
     t.integer "user_id"
@@ -22,10 +26,17 @@ ActiveRecord::Schema.define(version: 20170114164901) do
     t.text    "answer"
   end
 
+  create_table "multiplication_types", force: :cascade do |t|
+    t.integer "question_id"
+  end
+
   create_table "questions", force: :cascade do |t|
-    t.string  "body"
     t.json    "data"
     t.integer "user_id"
+  end
+
+  create_table "subtraction_types", force: :cascade do |t|
+    t.integer "question_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -10,8 +10,6 @@ export default class WelcomeUI extends Component {
   }
 
   componentWillMount () {
-    this.props._appActions.change(true, 'loading', 'welcome')
-    this.props._historyActions.getHistory()
   }
 
   componentWillReceiveProps (props) {

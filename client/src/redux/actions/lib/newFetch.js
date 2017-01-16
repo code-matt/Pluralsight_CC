@@ -1,5 +1,3 @@
-import {notify} from 'react-notify-toast'
-
 function newFetch (httpAction, auth = false, urlPath, payload) {
   var headers
   if (auth) {

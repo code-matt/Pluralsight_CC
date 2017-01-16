@@ -59,6 +59,15 @@ def seed_all_the_things!
         },
       user_id: user1.id)
       questions << question
+      char = /[^\w\? ]/.match(row[0].to_s)
+      case char.to_s
+        when '*'
+          MultiplicationType.create(question_id: question.id)
+        when '+'
+          AdditionType.create(question_id: question.id)
+        when '-'
+          SubtractionType.create(question_id: question.id)
+      end
     end
   end
   1000.times do

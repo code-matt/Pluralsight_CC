@@ -25,6 +25,9 @@ const DEFAULT_STATE = {
   search: {
     query: '',
     loading: false
+  },
+  piechart: {
+    progress: [0, 0]
   }
 }
 

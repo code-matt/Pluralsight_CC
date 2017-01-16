@@ -8,13 +8,21 @@ import WelcomeUI from '../../redux/containers/welcome'
 import ProgressWidget from './widgets/progressWidget/progressWidget'
 
 import './dashboard.css'
-import {notify} from 'react-notify-toast'
 import Button from 'react-mdl/lib/Button'
 
 import { Router, Route, browserHistory } from 'react-router'
-import { Provider } from 'react-redux'
 
 export default class Dashboard extends Component {
+  
+  constructor () {
+    super()
+    this.componentWillMount = this.componentWillMount.bind(this)
+  }
+
+  componentWillMount () {
+    this.props._appActions.change(true, 'loading', 'welcome')
+    this.props._historyActions.getHistory()
+  }
   render () {
     return (
       <div className='questionbox'>
@@ -48,7 +56,7 @@ export default class Dashboard extends Component {
               </div>
             </div>
             <div className='col-md-4 sidebar' style={{height: '100%'}}>
-              <ProgressWidget />
+              <ProgressWidget progress={this.props.appData.piechart.progress} />
             </div>
           </div>
           : <div className='row'>
