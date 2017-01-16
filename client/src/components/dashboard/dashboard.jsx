@@ -3,6 +3,8 @@ import React, {Component} from 'react'
 import VisibleLoginForm from '../../redux/containers/login'
 import VisibleQuestionUI from '../../redux/containers/questionUI'
 import VisibleAddNewQuestion from '../../redux/containers/addNew'
+import VisibleSearch from '../../redux/containers/search'
+
 import WelcomeUI from '../../redux/containers/welcome'
 
 import ProgressWidget from './widgets/progressWidget/progressWidget'
@@ -37,7 +39,7 @@ export default class Dashboard extends Component {
                   <Button onClick={() => browserHistory.push('/')} className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>
                     Dashboard
                   </Button>
-                  <Button onClick={() => this.props._authActions.logout()} className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>
+                  <Button onClick={() => browserHistory.push('/search')} className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>
                     Search Questions
                   </Button>
                   <Button onClick={() => browserHistory.push('/addnew')} className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>
@@ -51,6 +53,7 @@ export default class Dashboard extends Component {
                     <Route path='/' component={WelcomeUI} />
                     <Route path='/question/:id' component={VisibleQuestionUI} />
                     <Route path='/addnew' component={VisibleAddNewQuestion} />
+                    <Route path='/search' component={VisibleSearch} />
                   </Router>
                 </div>
               </div>

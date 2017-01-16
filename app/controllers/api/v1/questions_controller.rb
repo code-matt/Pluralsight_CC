@@ -28,6 +28,9 @@ class Api::V1::QuestionsController < ApplicationController
     end
   end
 
+  def search
+  end
+
   def create
     user = current_user
     question = params['question']
