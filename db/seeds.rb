@@ -43,6 +43,18 @@ def seed_all_the_things!
     password: '12345678',
   )
 
+  add = Type.create(
+    name: 'AdditionType'
+  )
+
+  mult = Type.create(
+    name: 'MultiplicationType'
+  )
+
+  sub = Type.create(
+    name: 'SubtractionType'
+  )
+
   options = {
     skip_blanks: true,
     headers: :first_row,
@@ -51,23 +63,24 @@ def seed_all_the_things!
   questions = []
   CSV.foreach("#{Rails.root}/db/cc_questions.csv", options).with_index do |row,i|
     if row.length > 0
+      char = /[^\w\? ]/.match(row[0].to_s)
+      case char.to_s
+        when '*'
+          typeID = mult.id
+        when '+'
+          typeID = add.id
+        when '-'
+          typeID = sub.id
+      end
       question = Question.create(
         data: {
           body: row[0].to_s,
           correct_answer: row[1].to_i,
           distractors: row[2].split(',').map{ |answer| answer.delete(' ').to_i}
         },
-      user_id: user1.id)
+      user_id: user1.id,
+      type_id: typeID)
       questions << question
-      char = /[^\w\? ]/.match(row[0].to_s)
-      case char.to_s
-        when '*'
-          MultiplicationType.create(question_id: question.id)
-        when '+'
-          AdditionType.create(question_id: question.id)
-        when '-'
-          SubtractionType.create(question_id: question.id)
-      end
     end
   end
   1000.times do

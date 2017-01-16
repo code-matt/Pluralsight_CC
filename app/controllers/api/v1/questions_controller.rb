@@ -1,3 +1,9 @@
+ALLOWED_FILTERS = [
+  'AdditionType',
+  'SubtractionType',
+  'MultiplicationType'
+]
+
 class Api::V1::QuestionsController < ApplicationController
   before_action :authenticate_user
   def index
@@ -29,6 +35,20 @@ class Api::V1::QuestionsController < ApplicationController
   end
 
   def search
+    filters = params['filters'].split(',')
+    results = []
+    if (filters.length == 0)
+      results << Question.all
+    else
+      filters.each do |filter|
+        if ALLOWED_FILTERS.include?(filter)
+          results << Type.find_by(name: sanitize(filter)).questions
+        else
+          next
+        end
+      end
+    end
+    render json: {results: results.flatten}
   end
 
   def create

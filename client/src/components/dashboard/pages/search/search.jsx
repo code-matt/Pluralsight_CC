@@ -7,7 +7,14 @@ import './search.css'
 export default class Search extends Component {
   constructor () {
     super()
-    // this.componentWillMount = this.componentWillMount.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleChange (event) {
+    this.props._appActions.change({
+      ...this.props.appData.search.options,
+      [event.target.id]: event.target.checked
+    }, 'options', 'search')
   }
 
   render () {
@@ -15,11 +22,13 @@ export default class Search extends Component {
       <div className='form-style-8' style={{marginTop: '3px', marginLeft: 'auto', marginRight: 'auto', width: '75%'}}>
         <h5 style={{textAlign: 'center', margin: '0px', padding: '10px'}}>Search Questions</h5>
         <div className='search-options'>
-          <Checkbox label='Addition' ripple />
-          <Checkbox label='Multiplication' ripple />
-          <Checkbox label='Subtraction' ripple />
+          <Checkbox onChange={this.handleChange} id='AdditionType' label='Addition' ripple />
+          <Checkbox onChange={this.handleChange} id='MultiplicationType' label='Multiplication' ripple />
+          <Checkbox onChange={this.handleChange} id='SubtractionType' label='Subtraction' ripple />
         </div>
-        <input type='submit' />
+        <input onClick={() => {
+          this.props._questionActions.searchQuestions(this.props.appData.search.options)
+        }} type='submit' />
       </div>
     )
   }

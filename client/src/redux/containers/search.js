@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import Search from '../../components/dashboard/pages/search/search'
 
 import { change } from '../actions/app'
+import { searchQuestions } from '../actions/questions'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -14,6 +15,11 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     _appActions: {
       change: (value, fieldId, objectPropName) => {
         dispatch(change(value, fieldId, objectPropName))
+      }
+    },
+    _questionActions: {
+      searchQuestions: (filters) => {
+        dispatch(searchQuestions(filters))
       }
     }
   }

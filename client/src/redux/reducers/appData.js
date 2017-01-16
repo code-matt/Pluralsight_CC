@@ -24,7 +24,13 @@ const DEFAULT_STATE = {
   },
   search: {
     query: '',
-    loading: false
+    loading: false,
+    options: {
+      AdditionType: false,
+      MultiplicationType: false,
+      SubtractionType: false
+    },
+    results: []
   },
   piechart: {
     progress: [0, 0]
