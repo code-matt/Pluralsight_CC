@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170116192905) do
+ActiveRecord::Schema.define(version: 20170116195309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20170116192905) do
     t.json    "data"
     t.integer "user_id"
     t.integer "type_id"
+    t.index ["type_id"], name: "index_questions_on_type_id", using: :btree
   end
 
   create_table "types", force: :cascade do |t|
