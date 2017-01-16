@@ -37,47 +37,38 @@ export default class AddNewQuestion extends Component {
   render () {
     const UI = this.props.appData.add
     return (
-      <div style={{marginTop:'25px',marginLeft: 'auto',marginRight: 'auto',width: '75%'}}>
-        <h6 style={{textAlign: 'center',margin: '10px'}}>Add new question</h6>
-        <Textfield
+      <div className='form-style-8' style={{marginTop:'3px',marginLeft: 'auto',marginRight: 'auto',width: '75%'}}>
+        <h5 style={{textAlign: 'center',margin: '10px'}}>Add new question</h5>
+        <textarea
           ref='question'
-          rows={3}
+          rows='3'
           id='question'
-          key={'questionInput'}
           onChange={this.handleValueChange}
-          label='Enter a math question'
-          floatingLabel
-          style={{width: '100%'}}
-        />
-        <Textfield
+          placeholder='Enter a math question'
+        ></textarea>
+        <textarea
           ref='answer'
-          key={'answerInput'}
           id='answer'
           onChange={this.handleValueChange}
-          label='Enter the correct answer'
-          floatingLabel
-          style={{width: '100%'}}
-        />
+          placeholder='Enter the correct answer'
+        ></textarea>
         <div className='distractors'>
           <div style={{textAlign: 'center'}}>
-            Add between 1 and 5 distractors
+            Add between 1 and 5 distractors <span style={{fontSize: '2.5em'}} onClick={() => this.controlDialog(true)}><i style={{color: '#51D9FF'}} className='fa fa-plus-square' aria-hidden='true' /></span>
           </div>
           <div className='chip-bg'>
             {UI.distractors.map((distractor, idx) => {
               return <Chip key={idx} style={{marginRight: '10px'}}>{distractor}</Chip>
             })}
-            <span style={{fontSize: '2.5em', marginLeft: '100%'}} onClick={() => this.controlDialog(true)}><i style={{color: '#51D9FF'}} className='fa fa-plus-square' aria-hidden='true' /></span>
           </div>
         </div>
-        <Button onClick={() => {
+        <input onClick={() => {
           this.props._questionActions.addQuestion(
             UI.question,
             UI.answer,
             UI.distractors
           )
-        }} type='button'>
-          Submit
-        </Button>
+        }} type='submit' />
         <Dialog open={UI.dialogOpen} onCancel={this.handleCloseDialog}>
           <DialogTitle>Add a distractor</DialogTitle>
           <DialogContent>
