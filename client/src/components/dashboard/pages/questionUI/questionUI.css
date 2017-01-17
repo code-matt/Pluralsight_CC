@@ -4,6 +4,7 @@
   text-decoration: underline;
 }
 
-.answer {
-  
+.question-answer:hover {
+  cursor: pointer;
+  color: #00FFF8;
 }

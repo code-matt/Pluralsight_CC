@@ -30,27 +30,31 @@ export default class Search extends Component {
         <input onClick={() => {
           this.props._questionActions.searchQuestions(UI.options)
         }} type='submit' />
-        <div style={{marginTop: '10px',textAlign: 'center'}}>
-          {renderResults(UI.results, UI.page)}
+        {!UI.loading
+        ? <div>
+          <div style={{marginTop: '10px', textAlign: 'center'}}>
+            {renderResults(UI.results, UI.page)}
+          </div>
+          {UI.page !== 0
+          ? <div className='pull-left history-button'
+            onClick={() => this.props._appActions.change(
+              UI.page - 1,
+              'page',
+              'search'
+            )}><i className='fa fa-arrow-left fa-2x' aria-hidden='true' />
+          </div>
+          : null}
+          {UI.page <= Math.floor((UI.results.length / 10) - 1)
+          ? <div className='pull-right history-button'
+            onClick={() => this.props._appActions.change(
+              UI.page + 1,
+              'page',
+              'search'
+            )}><i className='fa fa-arrow-right fa-2x' aria-hidden='true' />
+          </div>
+          : null}
         </div>
-        {UI.page !== 0
-        ? <div className='pull-left history-button'
-          onClick={() => this.props._appActions.change(
-            UI.page - 1,
-            'page',
-            'search'
-          )}><i className='fa fa-arrow-left fa-2x' aria-hidden='true' />
-        </div>
-        : null}
-        {UI.page <= Math.floor((UI.results.length / 10) - 1)
-        ? <div className='pull-right history-button'
-          onClick={() => this.props._appActions.change(
-            UI.page + 1,
-            'page',
-            'search'
-          )}><i className='fa fa-arrow-right fa-2x' aria-hidden='true' />
-        </div>
-        : null}
+        : <Spinner />}
       </div>
     )
   }
