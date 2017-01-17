@@ -9,6 +9,7 @@ const history = (state, action) => {
   }
   switch (action.type) {
     case 'ADD_NEW_ANSWER':
+      debugger
       var newHistory = state.concat(action.answer)
       localStorage.history = JSON.stringify({history: newHistory})
       return newHistory

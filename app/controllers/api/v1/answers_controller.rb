@@ -1,6 +1,6 @@
 class Api::V1::AnswersController < ApplicationController
   before_action :authenticate_user
-  
+
   def create
     user = current_user
     question_id = sanitize(params['id'].to_s).to_i
@@ -9,27 +9,18 @@ class Api::V1::AnswersController < ApplicationController
     if Answer.where(user_id: user.id, question_id: question.id)[0]
       render json: {error: 'Cant answer a question twice!'}
     else
-      if question.data['correct_answer'] == answer
-        answer = Answer.create(
-          user_id: user.id,
-          question_id: question.id,
-          answer: answer,
-          correct: true
-        )
-        render json: {
-          answer: answer
-        }
-      else
-        answer = Answer.create(
-          user_id: user.id,
-          question_id: question.id,
-          answer: answer,
-          correct: false
-        )
-        render json: {
-          answer: answer
-        }
-      end
+      Answer.create(
+        user_id: user.id,
+        question_id: question.id,
+        answer: answer,
+        correct: question.data['correct_answer'] == answer
+      )
+      render json: {answer: {
+        question: question.data,
+        answer: answer,
+        correct: question.data['correct_answer'] == answer,
+        id: question.id
+      }}
     end
   end
 
