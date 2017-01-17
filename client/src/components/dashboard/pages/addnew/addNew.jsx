@@ -37,21 +37,21 @@ export default class AddNewQuestion extends Component {
   render () {
     const UI = this.props.appData.add
     return (
-      <div className='form-style-8' style={{marginTop:'3px',marginLeft: 'auto',marginRight: 'auto',width: '75%'}}>
-        <h5 style={{textAlign: 'center',margin: '10px'}}>Add new question</h5>
+      <div className='form-style-8' style={{marginTop: '3px', marginLeft: 'auto', marginRight: 'auto', width: '75%'}}>
+        <h5 style={{textAlign: 'center', margin: '10px'}}>Add new question</h5>
         <textarea
           ref='question'
           rows='3'
           id='question'
           onChange={this.handleValueChange}
           placeholder='Enter a math question'
-        ></textarea>
+         />
         <textarea
           ref='answer'
           id='answer'
           onChange={this.handleValueChange}
           placeholder='Enter the correct answer'
-        ></textarea>
+         />
         <div className='distractors'>
           <div style={{textAlign: 'center'}}>
             Add between 1 and 5 distractors <span style={{fontSize: '2.5em'}} onClick={() => this.controlDialog(true)}><i style={{color: '#51D9FF'}} className='fa fa-plus-square' aria-hidden='true' /></span>

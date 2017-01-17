@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import { token } from './auth'
 import { appData } from './appData'
-import { questions } from './favorites'
+import { questions } from './questions'
 import { history } from './history'
 
 const MIGHSchedulerApp = combineReducers({

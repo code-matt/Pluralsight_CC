@@ -5,6 +5,8 @@ import VisibleQuestionUI from '../../redux/containers/questionUI'
 import VisibleAddNewQuestion from '../../redux/containers/addNew'
 import VisibleSearch from '../../redux/containers/search'
 
+import { calculateProgress } from '../../redux/actions/history'
+
 import WelcomeUI from '../../redux/containers/welcome'
 
 import ProgressWidget from './widgets/progressWidget/progressWidget'
@@ -15,6 +17,26 @@ import Button from 'react-mdl/lib/Button'
 import { Router, Route, browserHistory } from 'react-router'
 
 export default class Dashboard extends Component {
+  
+  constructor () {
+    super()
+    this.componentWillMount = this.componentWillMount.bind(this)
+  }
+
+  componentWillMount () {
+    if (window.location.pathName !== '/') {
+      if (this.props.history.length === 0 && this.props.token) {
+        this.props._appActions.change(true, 'loading', 'welcome')
+        this.props._historyActions.getHistory()
+      } else {
+        this.props._appActions.change(
+          calculateProgress(this.props.history),
+          'progress',
+          'piechart')
+      }
+    }
+  }
+
   render () {
     return (
       <div className='questionbox'>

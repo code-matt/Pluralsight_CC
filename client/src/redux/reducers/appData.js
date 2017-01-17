@@ -15,7 +15,8 @@ const DEFAULT_STATE = {
     distractors: [],
     loading: false,
     dialogOpen: false,
-    reset: false
+    reset: false,
+    link: null
   },
   question: {
     question: {},

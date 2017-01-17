@@ -43,17 +43,17 @@ class Api::V1::QuestionsController < ApplicationController
     distractors = params['distractors']
     data = 
       {
-        question: question,
-        answer: answer,
+        body: question,
+        correct_answer: answer.to_i,
         distractors: distractors.map{ |n| n.to_i }
       }
-    Question.create(
-      data: data
+    new_question = Question.create(
+      data: data,
+      user_id: user.id,
+      type_id: 1
     )
-    render json: data
+    render json: {id: new_question.id}
   end
-
-
 
   def check_for_answers(user_id, question_id)
     answer = Answer.where(user_id: user_id, question_id: question_id)[0]
