@@ -2,7 +2,7 @@ class Api::V1::HistoryController < ApplicationController
   before_action :authenticate_user
   def index
     user = current_user
-    answers = Answer.where(user_id: current_user.id)
+    answers = Answer.where(user_id: current_user.id).order("created_at DESC")
     history = []
     answers.each do |answer|
       history << {

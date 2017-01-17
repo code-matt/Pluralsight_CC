@@ -5,6 +5,7 @@ class CreateAnswers < ActiveRecord::Migration[5.0]
       t.integer :question_id
       t.boolean :correct
       t.text :answer
+      t.timestamps
     end
   end
 end

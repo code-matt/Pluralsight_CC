@@ -4,6 +4,7 @@ class CreateQuestions < ActiveRecord::Migration[5.0]
       t.json :data
       t.integer :user_id
       t.integer :type_id
+      t.timestamps
     end
   end
 end

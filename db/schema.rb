@@ -16,16 +16,20 @@ ActiveRecord::Schema.define(version: 20170116195309) do
   enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "question_id"
-    t.boolean "correct"
-    t.text    "answer"
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.boolean  "correct"
+    t.text     "answer"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "questions", force: :cascade do |t|
-    t.json    "data"
-    t.integer "user_id"
-    t.integer "type_id"
+    t.json     "data"
+    t.integer  "user_id"
+    t.integer  "type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["type_id"], name: "index_questions_on_type_id", using: :btree
   end
 
