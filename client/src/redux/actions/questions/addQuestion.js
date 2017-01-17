@@ -15,13 +15,14 @@ function addQuestion (question, answer, distractors) {
     .catch((error) => console.log(error))
     .then(response => response.json())
     .then(json => {
-      notify.show('Question added', 'success', 1500)
-      dispatch(resetPage('add'))
-      dispatch(change(true, 'reset', 'add'))
-      browserHistory.push('/question/' + json.id)
-    })
-    .catch((error) => {
-      notify.show('Question add failed', 'error', 1500)
+      if (json.error) {
+        notify.show(json.error, 'error', 1500)
+      } else {
+        notify.show('Question added', 'success', 1500)
+        dispatch(resetPage('add'))
+        dispatch(change(true, 'reset', 'add'))
+        browserHistory.push('/question/' + json.id)
+      }
     })
   }
 }

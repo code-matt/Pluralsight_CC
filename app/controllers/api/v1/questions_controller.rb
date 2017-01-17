@@ -41,33 +41,41 @@ class Api::V1::QuestionsController < ApplicationController
     question = params['question']
     answer = params['answer']
     distractors = params['distractors']
-    data = 
-      {
-        body: question,
-        correct_answer: answer.to_i,
-        distractors: distractors.map{ |n| n.to_i }
-      }
-    new_question = Question.create(
-      data: data,
-      user_id: user.id,
-      type_id: 1
-    )
-    render json: {id: new_question.id}
+    if (is_number?(answer))
+      data = 
+        {
+          body: question,
+          correct_answer: answer.to_i,
+          distractors: distractors.map{ |n| n.to_i }
+        }
+      new_question = Question.create(
+        data: data,
+        user_id: user.id,
+        type_id: 1
+      )
+      render json: {id: new_question.id}
+    else
+      render json: {error: 'Answer must be numeric only'}
+    end
   end
 
   def edit
-    user = current_user
-    question = Question.find(params['id'])
-    existing_answer = check_for_answers(user.id, question.id)
-    question.data['body'] = params['body']
-    question.data['correct_answer'] = params['answer'].to_i
-    question.save
-    render json: {
-      body: question.data['body'],
-      id: question.id,
-      answers: (question.data['distractors'] << question.data['correct_answer']).shuffle,
-      answered: existing_answer
-    }
+    if (is_number?(params["answer"]))
+      user = current_user
+      question = Question.find(params['id'])
+      existing_answer = check_for_answers(user.id, question.id)
+      question.data['body'] = params['body']
+      question.data['correct_answer'] = params['answer'].to_i
+      question.save
+      render json: {
+        body: question.data['body'],
+        id: question.id,
+        answers: (question.data['distractors'] << question.data['correct_answer']).shuffle,
+        answered: existing_answer
+      }
+    else
+      render json: {error: 'Answer must be numeric only.'}
+    end
   end
 
   def check_for_answers(user_id, question_id)
@@ -77,6 +85,10 @@ class Api::V1::QuestionsController < ApplicationController
     else
       false
     end
+  end
+
+  def is_number?(num)
+    Integer(num) rescue false
   end
 
   def sanitize(input)
