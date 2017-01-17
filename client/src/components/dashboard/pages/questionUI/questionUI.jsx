@@ -20,7 +20,7 @@ export default class QuestionComponent extends Component {
     const UI = this.props.appData.question
     return (
       <div>
-        {UI.question.loading
+        {UI.loading
           ? <div className='welcome-loading'>
             <h6 style={{paddingBottom: '10px'}}>Loading question....</h6>
             <div className='loading'>
