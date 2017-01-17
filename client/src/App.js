@@ -20,36 +20,10 @@ const store = createStore(PluralsightCC, applyMiddleware(thunk))
 
 class App extends Component {
 
-  constructor () {
-    super()
-    this.railsRedirect = this.railsRedirect.bind(this)
-  }
-
   componentWillReceiveProps (nextProps) {
     this.setState({
       children: nextProps.children
     })
-  }
-
-  requireAuth (nextState, replace) {
-    if (!localStorage.token) {
-      replace({
-        pathname: '/',
-        state: { 
-          nextPathname: nextState.location.pathname,
-          authError: true }
-      })
-    }
-  }
-
-  railsRedirect (nextState, replace) {
-    var location = window.location
-    if (location.search.split('=')[0] === '?goto') {
-      replace({
-        pathname: '/' + location.search.split('=')[1],
-        state: { nextPathname: nextState.location.pathname }
-      })
-    }
   }
 
   render () {
