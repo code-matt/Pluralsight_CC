@@ -12,6 +12,7 @@ const token = (state, action) => {
       return null
     case 'LOGOUT_SUCCESS':
       delete localStorage.token
+      delete localStorage.history
       return null
     default:
       return state
