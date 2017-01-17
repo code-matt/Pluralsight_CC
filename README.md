@@ -10,7 +10,7 @@
 * Rails5/bundler - http://railsapps.github.io/installrubyonrails-mac.html
 
 ### Install instructions
-* Create a .env file in client and put the following in it. Replace
+* Create a .env file in client folder and put the following in it. Replace
 the PROD host with your own. 
 ```
 REACT_APP_DEV_HOST='http://localhost:3000'
