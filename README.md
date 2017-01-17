@@ -19,7 +19,7 @@ REACT_APP_PROD_HOST='https://pluralsight-cc.herokuapp.com'
 * If you cannot get rails5/bundler setup.. just go ahead and set the DEV
 host to heroku as well so you can preview the app.
 
-* You only need to do the create/migrate/seed steps once.
+* You only need to do the bundle/create/migrate/seed steps once.
 
 ##### Prod:
 ```
