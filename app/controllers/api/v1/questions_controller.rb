@@ -55,6 +55,10 @@ class Api::V1::QuestionsController < ApplicationController
     render json: {id: new_question.id}
   end
 
+  def edit
+    byebug
+  end
+
   def check_for_answers(user_id, question_id)
     answer = Answer.where(user_id: user_id, question_id: question_id)[0]
     if answer

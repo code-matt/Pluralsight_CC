@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import QuestionComponent from '../../components/dashboard/pages/questionUI/questionUI'
 import { change } from '../actions/app'
-import { getQuestion, answerQuestion } from '../actions/questions'
+import { getQuestion, answerQuestion, editQuestion } from '../actions/questions'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -23,6 +23,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       },
       answerQuestion: (id, answer, answered) => {
         dispatch(answerQuestion(id, answer, answered))
+      },
+      editQuestion: (body, answer, distractors) => {
+        dispatch(answerQuestion(body, answer, distractors))
       }
     }
   }

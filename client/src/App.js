@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-// redux container components
+// containers
 import VisibleDashboard from './redux/containers/dashboard'
 import VisibleHeader from './redux/containers/header'
 
-//css
+// css
 import './App.css'
 
 // notifications

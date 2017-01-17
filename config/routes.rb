@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :answers, only: [:create]
       get '/history', to: 'history#index'
       get '/search', to: 'questions#search'
+      post '/edit', to: 'questions#edit'
     end
   end
 
