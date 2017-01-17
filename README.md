@@ -53,7 +53,7 @@ visit localhost:3001
 
 ###### Cant get rails going?:
 Follow the instructions mentioned above about what to set your DEV host to 
-in the .env file you need to add. 
+in the .env file that you need to create. 
 ```
 cd client
 npm install
