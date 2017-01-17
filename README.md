@@ -1,6 +1,9 @@
 # https://pluralsight-cc.herokuapp.com
 
 ## Pluralsight Code Challenge Simple Question App
+* Redux
+* React
+* Rails5 in API mode
 
 ### Prerequisites
 * Node.js and NPM - http://blog.teamtreehouse.com/install-node-js-npm-mac
