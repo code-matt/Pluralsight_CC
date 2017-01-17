@@ -13,26 +13,8 @@ import './dashboard.css'
 import Button from 'react-mdl/lib/Button'
 
 import { Router, Route, browserHistory } from 'react-router'
-import { calculateProgress } from '../../redux/actions/history'
 
 export default class Dashboard extends Component {
-  
-  constructor () {
-    super()
-    this.componentWillMount = this.componentWillMount.bind(this)
-  }
-
-  componentWillMount () {
-    if (this.props.history.length === 0) {
-      this.props._appActions.change(true, 'loading', 'welcome')
-      this.props._historyActions.getHistory()
-    } else {
-      this.props._appActions.change(
-        calculateProgress(this.props.history),
-        'progress',
-        'piechart')
-    }
-  }
   render () {
     return (
       <div className='questionbox'>

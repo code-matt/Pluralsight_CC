@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
 import Spinner from 'react-mdl/lib/Spinner'
 
-import {browserHistory} from 'react-router'
-
 import './questionUI.css'
 
 export default class QuestionComponent extends Component {
@@ -24,7 +22,7 @@ export default class QuestionComponent extends Component {
       <div>
         {UI.question.loading
           ? <div className='welcome-loading'>
-            <h6 style={{paddingBottom: '10px'}}>Loading question...</h6>
+            <h6 style={{paddingBottom: '10px'}}>Loading question....</h6>
             <div className='loading'>
               <Spinner />
             </div>

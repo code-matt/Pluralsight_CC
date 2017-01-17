@@ -16,8 +16,8 @@ export default class AddNewQuestion extends Component {
 
   componentWillReceiveProps (nextProps) {
     if (nextProps.appData.add.reset) {
-      this.refs.question.inputRef.value = ''
-      this.refs.answer.inputRef.value = ''
+      this.refs.question.value = ''
+      this.refs.answer.value = ''
       this.props._appActions.change(false, 'reset', 'add')
     }
   }

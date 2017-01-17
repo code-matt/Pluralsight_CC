@@ -8,7 +8,7 @@ function searchQuestion (filters) {
       arr.push(key)
     }
   }
-  var url = '/api/v1/search' + '?filters=' + arr
+  var url = '/api/v1/search?filters=' + arr
   return function (dispatch) {
     dispatch(change(true, 'loading', 'search'))
     return newFetch('GET', true, url)

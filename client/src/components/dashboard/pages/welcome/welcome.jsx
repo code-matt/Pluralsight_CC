@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Spinner from 'react-mdl/lib/Spinner'
-
+import { calculateProgress } from '../../../../redux/actions/history'
 import './welcome.css'
 
 export default class WelcomeUI extends Component {
@@ -10,6 +10,15 @@ export default class WelcomeUI extends Component {
   }
 
   componentWillMount () {
+    if (this.props.history.length === 0 && this.props.token) {
+      this.props._appActions.change(true, 'loading', 'welcome')
+      this.props._historyActions.getHistory()
+    } else {
+      this.props._appActions.change(
+        calculateProgress(this.props.history),
+        'progress',
+        'piechart')
+    }
   }
 
   componentWillReceiveProps (props) {

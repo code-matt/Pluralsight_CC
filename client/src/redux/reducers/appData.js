@@ -51,9 +51,9 @@ const appData = (state, action) => {
     case 'ADD_DISTRACTOR':
       return {
         ...state,
-        ['add']: {
+        'add': {
           ...state['add'],
-          ['distractors']: state.add.distractors.concat(action.distractor)
+          'distractors': state.add.distractors.concat(action.distractor)
         }
       }
     case 'CHANGE_DATA':
