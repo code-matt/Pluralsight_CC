@@ -3,8 +3,8 @@
 ## Pluralsight Code Challenge Simple Question App
 
 ### Prerequisites
-Node.js and NPM - http://blog.teamtreehouse.com/install-node-js-npm-mac
-Rails5/bundler - http://railsapps.github.io/installrubyonrails-mac.html
+* Node.js and NPM - http://blog.teamtreehouse.com/install-node-js-npm-mac
+* Rails5/bundler - http://railsapps.github.io/installrubyonrails-mac.html
 
 ### Install instructions
 * Create a .env file in client and put the following in it. Replace
