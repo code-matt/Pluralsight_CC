@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import Spinner from 'react-mdl/lib/Spinner'
 
+import Spinner from 'react-mdl/lib/Spinner'
 import './questionUI.css'
 
 export default class QuestionComponent extends Component {

@@ -1,7 +1,5 @@
 import { newFetch } from '../lib/newFetch'
 import { change } from '../app'
-import { notify } from 'react-notify-toast'
-
 
 const getHistorySuccess = (history) => ({
   type: 'GET_HISTORY_SUCCESS',

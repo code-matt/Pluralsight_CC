@@ -1,15 +1,18 @@
 import React, {Component} from 'react'
 import { Pie } from './pie'
-import './progressWidget.css'
+
 import Spinner from 'react-mdl/lib/Spinner'
+
+import './progressWidget.css'
 
 export default class QuestionBox extends Component {
   render () {
+    const UI = this.props.appData.piechart
     var colors = ['#58CF6C', '#F2317A']
     return (
       <div style={{height: '100%', textAlign: 'center'}} className='progressWidget'>
         <h4 style={{marginTop: '0px', marginBottom: '25%'}}>Your Progress</h4>
-        {this.props.appData.piechart.loading
+        {UI.loading
           ? <Spinner />
           : <div>
             {this.props.progress.reduce((a,b) => a+b) !== 0

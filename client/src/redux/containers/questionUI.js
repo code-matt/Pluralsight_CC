@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         dispatch(answerQuestion(id, answer, answered))
       },
       editQuestion: (body, answer, distractors) => {
-        dispatch(answerQuestion(body, answer, distractors))
+        dispatch(editQuestion(body, answer, distractors))
       }
     }
   }

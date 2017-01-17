@@ -51,7 +51,6 @@ class App extends Component {
 
 export default App
 
-
 /**
  * Warning from React Router, caused by react-hot-loader.
  * The warning can be safely ignored, so filter it from the console.
@@ -63,13 +62,13 @@ if (module.hot) {
     return typeof value === 'string'
   }
 
-  const orgError = console.error; // eslint-disable-line no-console
+  const orgError = console.error // eslint-disable-line no-console
   console.error = (...args) => { // eslint-disable-line no-console
     if (args && args.length === 1 && isString(args[0]) && args[0].indexOf('You cannot change <Router routes>;') > -1) {
       // React route changed
     } else {
       // Log the error as normally
-      orgError.apply(console, args);
+      orgError.apply(console, args)
     }
-  };
+  }
 }

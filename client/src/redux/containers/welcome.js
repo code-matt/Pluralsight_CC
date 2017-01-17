@@ -1,6 +1,5 @@
 import { connect } from 'react-redux'
 import WelcomeComponent from '../../components/dashboard/pages/welcome/welcome'
-
 import { change } from '../actions/app'
 import { getHistory } from '../actions/history'
 

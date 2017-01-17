@@ -1,6 +1,5 @@
 import { connect } from 'react-redux'
 import Search from '../../components/dashboard/pages/search/search'
-
 import { change } from '../actions/app'
 import { searchQuestions } from '../actions/questions'
 

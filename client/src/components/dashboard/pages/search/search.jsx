@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
+import { browserHistory } from 'react-router'
+
 import Spinner from 'react-mdl/lib/Spinner'
 import Checkbox from 'react-mdl/lib/Checkbox'
-import { browserHistory } from 'react-router'
 
 import './search.css'
 

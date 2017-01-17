@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+
 import Spinner from 'react-mdl/lib/Spinner'
 import { calculateProgress } from '../../../../redux/actions/history'
 import './welcome.css'
@@ -19,10 +20,6 @@ export default class WelcomeUI extends Component {
         'progress',
         'piechart')
     }
-  }
-
-  componentWillReceiveProps (props) {
-
   }
 
   render () {

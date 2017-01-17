@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import './header.css'
 import logo from '../../../pl.png'
 
@@ -9,12 +10,10 @@ class Header extends Component {
         <div className='row'>
           <div className='col-md-12'>
             <div className='row'>
-              <div id='tt2'>
-                <div className='App-logo'>
-                  <img src={logo} className='App-logo' alt='logo' />
-                </div>
-                <strong>Pluralsight CodeChallenge Simple Question App</strong>
+              <div className='App-logo'>
+                <img src={logo} className='App-logo' alt='logo' />
               </div>
+              <strong>Pluralsight CodeChallenge Simple Question App</strong>
             </div>
           </div>
         </div>

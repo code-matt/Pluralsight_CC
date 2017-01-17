@@ -1,23 +1,19 @@
 import React, {Component} from 'react'
+import { Router, Route, browserHistory } from 'react-router'
 
 import VisibleLoginForm from '../../redux/containers/login'
 import VisibleQuestionUI from '../../redux/containers/questionUI'
 import VisibleAddNewQuestion from '../../redux/containers/addNew'
 import VisibleSearch from '../../redux/containers/search'
-
-import { calculateProgress } from '../../redux/actions/history'
-
 import WelcomeUI from '../../redux/containers/welcome'
 
+import { calculateProgress } from '../../redux/actions/history'
 import ProgressWidget from './widgets/progressWidget/progressWidget'
-
-import './dashboard.css'
 import Button from 'react-mdl/lib/Button'
 
-import { Router, Route, browserHistory } from 'react-router'
+import './dashboard.css'
 
 export default class Dashboard extends Component {
-  
   constructor () {
     super()
     this.componentWillMount = this.componentWillMount.bind(this)

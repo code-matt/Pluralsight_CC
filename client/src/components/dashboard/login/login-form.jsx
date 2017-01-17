@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
-import './login-form.css'
+
 import Textfield from 'react-mdl/lib/Textfield'
 import Button from 'react-mdl/lib/Button'
 import Spinner from 'react-mdl/lib/Spinner'
+
+import './login-form.css'
 
 class LoginForm extends Component {
 
@@ -64,9 +66,7 @@ class LoginForm extends Component {
               type='password'
             />
           </div>
-          {
-            this.isLoading()
-          }
+          {this.isLoading()}
         </form>
       </div>
     )
