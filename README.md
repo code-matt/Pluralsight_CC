@@ -2,6 +2,9 @@
 
 ## Pluralsight Code Challenge Simple Question App
 
+### Prerequisites
+Node.js and NPM - http://blog.teamtreehouse.com/install-node-js-npm-mac
+Rails5/bundler - http://railsapps.github.io/installrubyonrails-mac.html
 
 ### Install instructions
 * Create a .env file in client and put the following in it. Replace
@@ -11,7 +14,7 @@ REACT_APP_DEV_HOST='http://localhost:3000'
 REACT_APP_PROD_HOST='https://pluralsight-cc.herokuapp.com'
 ```
 * If you cannot get rails5/bundler setup.. just go ahead and set the DEV
-host to heroku as well.
+host to heroku as well so you can preview the app.
 
 ##### Prod:
 ```
@@ -50,5 +53,5 @@ in the .env file you need to add.
 cd client
 npm install
 npm start
-visit localhost:3001
+visit localhost:3000
 ```
