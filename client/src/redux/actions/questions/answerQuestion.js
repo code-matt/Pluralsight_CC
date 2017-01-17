@@ -12,6 +12,7 @@ function answerQuestion (id, answer, answered) {
           answer: answer
         }
       )
+      .catch((error) => console.log(error))
       .then(response => response.json())
       .then(json => {
         dispatch(change(json.answer, 'answered', 'question'))

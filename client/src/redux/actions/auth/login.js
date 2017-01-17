@@ -21,6 +21,7 @@ function login (email, pass) {
         password: pass
       }
     })
+    .catch((error) => console.log(error))
     .then(response => response.json())
     .then(json => {
       setTimeout(() => {

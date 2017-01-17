@@ -23,11 +23,11 @@ class Api::V1::QuestionsController < ApplicationController
     filters = params['filters'].split(',')
     results = []
     if (filters.length == 0)
-      results << Question.all
+      results << Question.all.order("created_at DESC")
     else
       filters.each do |filter|
         if ALLOWED_FILTERS.include?(filter)
-          results << Type.find_by(name: sanitize(filter)).questions
+          results << Type.find_by(name: sanitize(filter)).questions.order("created_at DESC")
         else
           next
         end

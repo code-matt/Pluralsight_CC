@@ -12,6 +12,7 @@ function addQuestion (question, answer, distractors) {
         distractors: distractors
       }
     )
+    .catch((error) => console.log(error))
     .then(response => response.json())
     .then(json => {
       notify.show('Question added', 'success', 1500)

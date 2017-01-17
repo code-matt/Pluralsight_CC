@@ -12,9 +12,11 @@ function searchQuestion (filters) {
   return function (dispatch) {
     dispatch(change(true, 'loading', 'search'))
     return newFetch('GET', true, url)
+    .catch((error) => console.log(error))
     .then(response => response.json())
     .then(json => {
       dispatch(change(false, 'loading', 'search'))
+      dispatch(change(0, 'page', 'search'))
       dispatch(change(json.results, 'results', 'search'))
     })
   }

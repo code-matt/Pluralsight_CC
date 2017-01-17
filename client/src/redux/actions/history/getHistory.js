@@ -8,13 +8,10 @@ const getHistorySuccess = (history) => ({
   history: history
 })
 
-const getHistoryFail = () => ({
-  type: 'GET_HISTORY_FAIL'
-})
-
 function getHistory () {
   return function (dispatch) {
     return newFetch('GET', true, '/api/v1/history')
+    .catch((error) => console.log(error))
     .then(response => response.json())
     .then(json => {
       setTimeout(() => {
@@ -22,9 +19,6 @@ function getHistory () {
         dispatch(getHistorySuccess(json.history))
         dispatch(change(calculateProgress(json.history), 'progress', 'piechart'))
       }, 1250)
-    }).catch(error => {
-      notify.show('failed..', 'error', 1250)
-      dispatch(getHistoryFail())
     })
   }
 }
