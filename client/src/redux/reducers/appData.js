@@ -21,7 +21,10 @@ const DEFAULT_STATE = {
   question: {
     question: {},
     answered: null,
-    loading: false
+    loading: false,
+    dialogOpen: false,
+    editquestion: '',
+    editanswer: ''
   },
   search: {
     query: '',

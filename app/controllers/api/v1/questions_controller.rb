@@ -56,7 +56,18 @@ class Api::V1::QuestionsController < ApplicationController
   end
 
   def edit
-    byebug
+    user = current_user
+    question = Question.find(params['id'])
+    existing_answer = check_for_answers(user.id, question.id)
+    question.data['body'] = params['body']
+    question.data['correct_answer'] = params['answer'].to_i
+    question.save
+    render json: {
+      body: question.data['body'],
+      id: question.id,
+      answers: (question.data['distractors'] << question.data['correct_answer']).shuffle,
+      answered: existing_answer
+    }
   end
 
   def check_for_answers(user_id, question_id)
