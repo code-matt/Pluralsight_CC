@@ -6,6 +6,7 @@
 * Rails5 in API mode
 
 ### Prerequisites
+* Postgres - http://exponential.io/blog/2015/02/21/install-postgresql-on-mac-os-x-via-brew/
 * Node.js and NPM - http://blog.teamtreehouse.com/install-node-js-npm-mac
 * Rails5/bundler - http://railsapps.github.io/installrubyonrails-mac.html
 
