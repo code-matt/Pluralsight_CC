@@ -41,7 +41,7 @@ export default class AddNewQuestion extends Component {
     this.props._questionActions.addQuestion(
       {
         number1: event.currentTarget.elements.number1.value,
-        operator: event.currentTarget.elements.operation.value,
+        operation: event.currentTarget.elements.operation.value,
         number2: event.currentTarget.elements.number2.value
       },
       UI.answer,

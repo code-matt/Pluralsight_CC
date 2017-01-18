@@ -44,15 +44,23 @@ def seed_all_the_things!
   )
 
   add = Type.create(
-    name: 'AdditionType'
+    name: 'AdditionType',
+    char: '+'
   )
 
   mult = Type.create(
-    name: 'MultiplicationType'
+    name: 'MultiplicationType',
+    char: '*'
   )
 
   sub = Type.create(
-    name: 'SubtractionType'
+    name: 'SubtractionType',
+    char: '-'
+  )
+
+  divide = Type.create(
+    name: 'DivisionType',
+    char: '/'
   )
 
   options = {
@@ -71,6 +79,8 @@ def seed_all_the_things!
           typeID = add.id
         when '-'
           typeID = sub.id
+        when '/'
+          typeID = divide.id
       end
       question = Question.create(
         data: {

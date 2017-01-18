@@ -52,7 +52,7 @@ class Api::V1::QuestionsController < ApplicationController
       new_question = Question.create(
         data: data,
         user_id: user.id,
-        type_id: 1
+        type_id: Type.find(what_type?(params['question']['operation']))
       )
       render json: {id: new_question.id}
     else
@@ -86,6 +86,20 @@ class Api::V1::QuestionsController < ApplicationController
     else
       false
     end
+  end
+
+  def what_type?(char)
+    case char.to_s
+      when '*'
+        typeID = Type.find_by(char: '*').id
+      when '+'
+        typeID = Type.find_by(char: '+').id
+      when '-'
+        typeID = Type.find_by(char: '-').id
+      when '/'
+        typeID = Type.find_by(char: '/').id
+    end
+    typeID
   end
 
   def is_number?(num)
