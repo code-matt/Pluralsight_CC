@@ -34,7 +34,9 @@ const DEFAULT_STATE = {
     options: {
       AdditionType: false,
       MultiplicationType: false,
-      SubtractionType: false
+      SubtractionType: false,
+      MyQuestions: false,
+      DivisionType: false
     },
     results: [],
     page: 0

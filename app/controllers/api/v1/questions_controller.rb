@@ -28,7 +28,11 @@ class Api::V1::QuestionsController < ApplicationController
     else
       filters.each do |filter|
         if ALLOWED_FILTERS.include?(filter)
-          results << Type.find_by(name: sanitize(filter)).questions.order("created_at DESC")
+          if filters.include?('MyQuestions')
+            results << Type.find_by(name: sanitize(filter)).questions.where(user_id: current_user.id).order("created_at DESC")
+          else
+            results << Type.find_by(name: sanitize(filter)).questions.order("created_at DESC")
+          end
         else
           next
         end
@@ -52,7 +56,7 @@ class Api::V1::QuestionsController < ApplicationController
       new_question = Question.create(
         data: data,
         user_id: user.id,
-        type_id: Type.find(what_type?(params['question']['operation']))
+        type: Type.find(what_type?(params['question']['operation']))
       )
       render json: {id: new_question.id}
     else

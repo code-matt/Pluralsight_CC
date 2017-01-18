@@ -88,7 +88,7 @@ def seed_all_the_things!
           correct_answer: row[1].to_i,
           distractors: row[2].split(',').map{ |answer| answer.delete(' ').to_i}
         },
-      user_id: user1.id,
+      user_id: (2..7).to_a.sample,
       type_id: typeID)
       questions << question
     end

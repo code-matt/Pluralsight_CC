@@ -27,6 +27,8 @@ export default class Search extends Component {
           <Checkbox onChange={this.handleChange} id='AdditionType' label='Addition' ripple />
           <Checkbox onChange={this.handleChange} id='MultiplicationType' label='Multiplication' ripple />
           <Checkbox onChange={this.handleChange} id='SubtractionType' label='Subtraction' ripple />
+          <Checkbox onChange={this.handleChange} id='DivisionType' label='Division' ripple />
+          <Checkbox onChange={this.handleChange} id='MyQuestions' label='My Questions' ripple />
         </div>
         <input onClick={() => {
           this.props._questionActions.searchQuestions(UI.options)
