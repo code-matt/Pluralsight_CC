@@ -12,6 +12,7 @@ export default class QuestionComponent extends Component {
     this.componentWillMount = this.componentWillMount.bind(this)
     this.controlDialog = this.controlDialog.bind(this)
     this.handleValueChange = this.handleValueChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentWillMount () {
@@ -21,8 +22,6 @@ export default class QuestionComponent extends Component {
   }
 
   controlDialog (openBool) {
-    this.props._appActions.change(this.refs.editquestion.value, 'editquestion', 'question')
-    this.refs.editquestion.value = this.props.appData.question.question.body
     this.props._appActions.change(
       openBool,
       'dialogOpen',
@@ -34,8 +33,23 @@ export default class QuestionComponent extends Component {
     this.props._appActions.change(event.target.value, event.target.id, 'question')
   }
 
+  handleSubmit (event) {
+    event.preventDefault()
+    const UI = this.props.appData.question
+    this.props._questionActions.editQuestion(
+      {
+        number1: event.target[0].value,
+        operation: event.target[1].value,
+        number2: event.target[2].value,
+        answer: event.target[3].value
+      },
+      UI.question.id
+    )
+  }
+
   render () {
     const UI = this.props.appData.question
+    const numericPattern = '^[+-]?[0-9]{1,3}(?:(?:,[0-9]{3})*(?:.[0-9]{2})?|(?:.[0-9]{3})*(?:,[0-9]{2})?|[0-9]*(?:[.,][0-9]{2})?)$'
     return (
       <div>
         {UI.loading
@@ -45,7 +59,7 @@ export default class QuestionComponent extends Component {
               <Spinner />
             </div>
           </div>
-          : <div className='question'>
+          : <div className='question form-style-8'>
             {UI.question.id
               ? <div>
                 {UI.answered
@@ -60,34 +74,57 @@ export default class QuestionComponent extends Component {
               : null}
           </div>}
         <Dialog open={UI.dialogOpen} onCancel={this.handleCloseDialog}>
-          <span style={{cursor: 'pointer'}} onClick={() => {
-            this.controlDialog(false)
-          }}><i className='fa fa-window-close' aria-hidden='true' /></span>
-          <div className='form-style-8' style={{width: '100%'}}>
-            <DialogTitle>Edit Question</DialogTitle>
-            <DialogContent>
+          <DialogContent className='form-style-8'>
+            <span onClick={() => {
+              this.controlDialog(false)
+            }}><i className='fa fa-window-close' aria-hidden='true' /></span>
+            <form onSubmit={this.handleSubmit} style={{color: '#FFF'}}>
+              <span style={{fontSize: '0.7em'}}>Enter a question in the form of "What is (numeric) (operation) (numeric)"</span>
+              <br />
+              {'What is '}
               <input
+                pattern={numericPattern}
+                title='Can only be numeric'
+                className='question-input'
+                style={{width: '75px'}}
+                id='number1'
+                ref='number1'
                 onChange={this.handleValueChange}
-                type='text'
-                placeholder='Question'
-                id='editquestion'
-                ref='editquestion' />
+                required />
               <input
+                pattern='[*\-+\/.]'
+                className='question-input'
+                maxLength={1} style={{width: '40px'}}
+                title='Can only be a math operation.[+,-,/,*]'
+                id='operation'
+                ref='operation'
                 onChange={this.handleValueChange}
-                type='text'
-                placeholder='Answer'
-                id='editanswer' />
-            </DialogContent>
-            <DialogActions>
-              <input type='submit' onClick={() => {
-                this.props._questionActions.editQuestion(
-                  UI.editquestion,
-                  UI.editanswer,
-                  UI.question.id
-                )
-              }} />
-            </DialogActions>
-          </div>
+                required />
+              <input
+                pattern={numericPattern}
+                title='Can only be numeric'
+                className='question-input'
+                style={{width: '75px'}}
+                id='number2'
+                ref='number2'
+                name='number2'
+                onChange={this.handleValueChange}
+                required /> ?
+              <hr />
+              Enter the correct answer
+              <br />
+              Answer:
+              <input
+                pattern={numericPattern}
+                title='Can only be numeric'
+                className='question-input'
+                style={{width: '75px'}}
+                ref='answer'
+                id='answer'
+                onChange={this.handleValueChange} />
+              <input type='submit' />
+            </form>
+          </DialogContent>
         </Dialog>
       </div>
     )
@@ -115,4 +152,3 @@ const QuestionAnswer = ({answer, questionID, component}) => {
     </div>
   )
 }
-

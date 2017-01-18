@@ -32,9 +32,9 @@ class App extends Component {
         <div className='main'>
           <Notifications />
         </div>
-        <div className='container'>
-          <div className='row'>
-            <div className='col-md-12 content'>
+        <div className='container-fluid'>
+          <div className='row' style={{height: '100%'}}>
+            <div className='col-md-10 offset-md-1 content'>
               <div>
                 <VisibleHeader store={store} />
               </div>

@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { browserHistory } from 'react-router'
 
 import Spinner from 'react-mdl/lib/Spinner'
 import { calculateProgress } from '../../../../redux/actions/history'
@@ -33,13 +34,12 @@ export default class WelcomeUI extends Component {
               <Spinner />
             </div>
           </div>
-          : <div style={{height: '100%', textAlign: 'center'}}>
-            -Your answer history-
-            <div>
-              {renderAnswers(
-                this.props.history,
-                UI.page)}
-            </div>
+          : <div className='form-style-8 row'>
+            <h5>Your answer history</h5>
+            <br />
+            {renderAnswers(
+              this.props.history,
+              UI.page)}
             <div className='page-buttons'>
               {UI.page !== 0
               ? <div className='pull-left history-button'
@@ -71,16 +71,21 @@ function renderAnswers (answers, page) {
   if (answers.length > 0) {
     return answers.map((answer, index) => (
       <Answer key={index} answer={answer} />
-        )).splice(page === 0 ? 0 : page * 5, 5)
+        )).splice(page === 0 ? 0 : page * 4, 4)
   }
   else return []
 }
 
 const Answer = ({answer}) => {
   return (
-    <div className='history-answer'>
-      Question: {answer.question.body} Your answer: {answer.answer}
-      <br />
+    <div
+      onClick={() => {
+        browserHistory.push('/question/' + answer.id)
+      }} className='col-md-4 offset-md-1 history-answer'>
+      Question: {answer.question.body}
+      <hr />
+      Your answer: {answer.answer}
+      <hr />
       correct?: {answer.correct ? 'true' : 'false'}
     </div>
   )

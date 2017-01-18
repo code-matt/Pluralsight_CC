@@ -18,8 +18,10 @@ export default class AddNewQuestion extends Component {
 
   componentWillReceiveProps (nextProps) {
     if (nextProps.appData.add.reset) {
-      this.refs.question.value = ''
       this.refs.answer.value = ''
+      this.refs.number1.value = ''
+      this.refs.number2.value = ''
+      this.refs.operation.value = ''
       this.props._appActions.change(false, 'reset', 'add')
     }
   }
@@ -47,13 +49,14 @@ export default class AddNewQuestion extends Component {
       UI.answer,
       UI.distractors
     )
+    event.preventDefault()
   }
 
   render () {
     const UI = this.props.appData.add
     const numericPattern = '^[+-]?[0-9]{1,3}(?:(?:,[0-9]{3})*(?:.[0-9]{2})?|(?:.[0-9]{3})*(?:,[0-9]{2})?|[0-9]*(?:[.,][0-9]{2})?)$'
     return (
-      <div className='form-style-8' style={{paddingTop: '5px',marginTop: '10px', marginLeft: 'auto', marginRight: 'auto', width: '75%'}}>
+      <div className='form-style-8'>
         <h5 style={{textAlign: 'center', margin: '0px', padding: '5px'}}>Add new question</h5>
         <form onSubmit={this.handleSubmit}>
           <span style={{fontSize: '0.7em'}}>Enter a question in the form of "What is (numeric) (operation) (numeric)"</span>
@@ -66,15 +69,17 @@ export default class AddNewQuestion extends Component {
             style={{width: '75px'}}
             id='number1'
             ref='number1'
-            onChange={this.handleValueChange} />
+            onChange={this.handleValueChange}
+            required />
           <input
             pattern='[*\-+\/.]'
             className='question-input'
             maxLength={1} style={{width: '40px'}}
             title='Can only be a math operation.[+,-,/,*]'
             id='operation'
-            ref='number=1'
-            onChange={this.handleValueChange} />
+            ref='operation'
+            onChange={this.handleValueChange}
+            required />
           <input
             pattern={numericPattern}
             title='Can only be numeric'
@@ -83,7 +88,8 @@ export default class AddNewQuestion extends Component {
             id='number2'
             ref='number2'
             name='number2'
-            onChange={this.handleValueChange} /> ?
+            onChange={this.handleValueChange}
+            required /> ?
           <hr />
           Enter the correct answer
           <br />
@@ -95,7 +101,8 @@ export default class AddNewQuestion extends Component {
             style={{width: '75px'}}
             ref='answer'
             id='answer'
-            onChange={this.handleValueChange} />
+            onChange={this.handleValueChange}
+            required />
           <div className='distractors'>
             <div style={{textAlign: 'center'}}>
             Add between 1 and 5 distractors 

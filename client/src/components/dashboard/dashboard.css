@@ -18,14 +18,27 @@
 }
 
 .demo-list-control {
-  max-width: 700px
+  /*max-width: 700px*/
 }
 
 .questionbox {
   color: #42797C;
   border: 1px solid #51D9FF;
-  height: 400px;
+  height: 70vh;
   width: 100%;
+  border-right: 1px solid #42797C;
+  overflow: hidden;
+}
+
+.login {
+  height: 70vh;
+}
+
+.leftside {
+  display: inline-block;
+  border-right: 1px solid #42797C;
+  margin-bottom: -1000px;
+  padding-bottom: 1000px;
 }
 
 .nav {

@@ -65,12 +65,12 @@ class Api::V1::QuestionsController < ApplicationController
   end
 
   def edit
-    if (is_number?(params["answer"]))
+    if (is_number?(params['question']["answer"]))
       user = current_user
-      question = Question.find(params['id'])
+      question = Question.find(params['question']['id'])
       existing_answer = check_for_answers(user.id, question.id)
-      question.data['body'] = params['body']
-      question.data['correct_answer'] = params['answer'].to_i
+      question.data['body'] = "What is #{params['question']['number1']} #{params['question']['operation']} #{params['question']['number2']}"
+      question.data['correct_answer'] = params['question']['answer'].to_i
       question.save
       render json: {
         body: question.data['body'],

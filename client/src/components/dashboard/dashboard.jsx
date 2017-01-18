@@ -36,10 +36,10 @@ export default class Dashboard extends Component {
 
   render () {
     return (
-      <div className='questionbox'>
+      <div className='questionbox container' style={{height: '100%', padding: '0 0'}}>
         {this.props.token
-          ? <div style={{width: '100%', height: '400px'}}>
-            <div className='col-md-8'>
+          ? <div>
+            <div className='col-sm-12 col-md-8 leftside'>
               <div className='row nav'>
                 <div className='bar'>
                   <Button onClick={() => this.props._authActions.logout()} className='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent nav-button'>
@@ -56,24 +56,22 @@ export default class Dashboard extends Component {
                   </Button>
                 </div>
               </div>
-              <div className='container'>
-                <div className='row'>
-                  <Router history={browserHistory}>
-                    <Route path='/' component={WelcomeUI} />
-                    <Route path='/question/:id' component={VisibleQuestionUI} />
-                    <Route path='/addnew' component={VisibleAddNewQuestion} />
-                    <Route path='/search' component={VisibleSearch} />
-                    <Route path='/*' component={NotFound} />
-                  </Router>
-                </div>
+              <div className='routercontent' style={{height: '100%'}}>
+                <Router history={browserHistory}>
+                  <Route path='/' component={WelcomeUI} />
+                  <Route path='/question/:id' component={VisibleQuestionUI} />
+                  <Route path='/addnew' component={VisibleAddNewQuestion} />
+                  <Route path='/search' component={VisibleSearch} />
+                  <Route path='/*' component={NotFound} />
+                </Router>
               </div>
             </div>
-            <div className='col-md-4 sidebar' style={{height: '100%'}}>
+            <div className='col-sm-12 col-md-4 sidebar' style={{height: '100%'}}>
               <ProgressWidget history={this.props.history} appData={this.props.appData} progress={this.props.appData.piechart.progress} />
             </div>
           </div>
           : <div className='row'>
-            <div className='col-md-12'>
+            <div className='col-md-12 login'>
               <VisibleLoginForm />
             </div>
           </div>

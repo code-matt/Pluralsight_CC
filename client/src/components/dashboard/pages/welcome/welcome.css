@@ -13,19 +13,28 @@
   border-width: 9px;
 }
 
+.historybox {
+  background-color: #171717;
+  text-align: center;
+  overflow: scroll;
+}
 .history-answer {
-  width: 90%;
-  margin: auto;
-  height: 55px;
-  background-color: #272626;
+  background-color: #343535;
   margin-top: 5px;
   margin-bottom: 5px;
   border: 1px solid #528C9C;
+  cursor: pointer;
+  font-size: 8px;
+}
+
+.history-answer:hover {
+  background-color: #3F4949
 }
 
 .history-button {
   color: #59B8D2;
   margin: -5px 8px 8px 6px;
+  transform: translateY(-20px);
 }
 
 .history-button:hover {
