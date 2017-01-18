@@ -17,6 +17,12 @@ dialog {
   color: #4EAEAE !important;
 }
 
+.question-input{
+    background-color: #2F2E2E;
+    border-color: #222;
+    color: #27A0A0;
+    margin: 10px 10px
+}
 .form-style-8{
     font-family: 'Open Sans Condensed', arial, sans;
     width: 500px;

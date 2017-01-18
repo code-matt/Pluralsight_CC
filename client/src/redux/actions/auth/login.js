@@ -12,6 +12,8 @@ export const loginActionFail = () => ({
   token: null
 })
 
+
+// timeout just for demonstrating loading spinner
 function login (email, pass) {
   return function (dispatch) {
     dispatch(change(true, 'loading', 'login'))

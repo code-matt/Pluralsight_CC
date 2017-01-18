@@ -86,19 +86,11 @@ def seed_all_the_things!
   1000.times do
     question = questions.sample
     correct = [true, false].sample
-    if correct
-      Answer.create(
-        user_id: (1..8).to_a.sample,
-        question_id: question.id,
-        correct: true,
-        answer: question.data['correct_answer'])
-    else
-      Answer.create(
-        user_id: (1..8).to_a.sample,
-        question_id: question.id,
-        correct: false,
-        answer: question.data['distractors'][0])
-    end
+    Answer.create(
+      user_id: (1..8).to_a.sample,
+      question_id: question.id,
+      correct: correct,
+      answer: question.data['distractors'][0])
   end
 end
 

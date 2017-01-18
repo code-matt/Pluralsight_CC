@@ -6,6 +6,7 @@ import VisibleQuestionUI from '../../redux/containers/questionUI'
 import VisibleAddNewQuestion from '../../redux/containers/addNew'
 import VisibleSearch from '../../redux/containers/search'
 import WelcomeUI from '../../redux/containers/welcome'
+import NotFound from '../not-found/notfound'
 
 import { calculateProgress } from '../../redux/actions/history'
 import ProgressWidget from './widgets/progressWidget/progressWidget'
@@ -62,6 +63,7 @@ export default class Dashboard extends Component {
                     <Route path='/question/:id' component={VisibleQuestionUI} />
                     <Route path='/addnew' component={VisibleAddNewQuestion} />
                     <Route path='/search' component={VisibleSearch} />
+                    <Route path='/*' component={NotFound} />
                   </Router>
                 </div>
               </div>

@@ -9,7 +9,9 @@ const DEFAULT_STATE = {
     loading: false
   },
   add: {
-    question: '',
+    number1: '',
+    operation: '',
+    number2: '',
     answer: '',
     distractor: '',
     distractors: [],

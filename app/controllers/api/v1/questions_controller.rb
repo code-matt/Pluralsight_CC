@@ -1,7 +1,8 @@
 ALLOWED_FILTERS = [
   'AdditionType',
   'SubtractionType',
-  'MultiplicationType'
+  'MultiplicationType',
+  'DivisionType'
 ]
 
 class Api::V1::QuestionsController < ApplicationController
@@ -38,7 +39,7 @@ class Api::V1::QuestionsController < ApplicationController
 
   def create
     user = current_user
-    question = params['question']
+    question = "What is #{params['question']['number1']} #{params['question']['operation']} #{params['question']['number2']}"
     answer = params['answer']
     distractors = params['distractors']
     if (is_number?(answer))

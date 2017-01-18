@@ -13,6 +13,7 @@ export default class AddNewQuestion extends Component {
     this.controlDialog = this.controlDialog.bind(this)
     this.handleValueChange = this.handleValueChange.bind(this)
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentWillReceiveProps (nextProps) {
@@ -35,41 +36,79 @@ export default class AddNewQuestion extends Component {
     )
   }
 
+  handleSubmit (event) {
+    const UI = this.props.appData.add
+    this.props._questionActions.addQuestion(
+      {
+        number1: event.currentTarget.elements.number1.value,
+        operator: event.currentTarget.elements.operation.value,
+        number2: event.currentTarget.elements.number2.value
+      },
+      UI.answer,
+      UI.distractors
+    )
+  }
+
   render () {
     const UI = this.props.appData.add
+    const numericPattern = '^[+-]?[0-9]{1,3}(?:(?:,[0-9]{3})*(?:.[0-9]{2})?|(?:.[0-9]{3})*(?:,[0-9]{2})?|[0-9]*(?:[.,][0-9]{2})?)$'
     return (
-      <div className='form-style-8' style={{marginTop: '3px', marginLeft: 'auto', marginRight: 'auto', width: '75%'}}>
-        <h5 style={{textAlign: 'center', margin: '10px'}}>Add new question</h5>
-        <textarea
-          ref='question'
-          rows='3'
-          id='question'
-          onChange={this.handleValueChange}
-          placeholder='Enter a math question'
-         />
-        <textarea
-          ref='answer'
-          id='answer'
-          onChange={this.handleValueChange}
-          placeholder='Enter the correct answer'
-         />
-        <div className='distractors'>
-          <div style={{textAlign: 'center'}}>
-            Add between 1 and 5 distractors <span style={{fontSize: '2.5em'}} onClick={() => this.controlDialog(true)}><i style={{color: '#51D9FF'}} className='fa fa-plus-square' aria-hidden='true' /></span>
+      <div className='form-style-8' style={{paddingTop: '5px',marginTop: '10px', marginLeft: 'auto', marginRight: 'auto', width: '75%'}}>
+        <h5 style={{textAlign: 'center', margin: '0px', padding: '5px'}}>Add new question</h5>
+        <form onSubmit={this.handleSubmit}>
+          <span style={{fontSize: '0.7em'}}>Enter a question in the form of "What is (numeric) (operation) (numeric)"</span>
+          <br />
+          {'What is '}
+          <input
+            pattern={numericPattern}
+            title='Can only be numeric'
+            className='question-input'
+            style={{width: '75px'}}
+            id='number1'
+            ref='number1'
+            onChange={this.handleValueChange} />
+          <input
+            pattern='[*\-+\/.]'
+            className='question-input'
+            maxLength={1} style={{width: '40px'}}
+            title='Can only be a math operation.[+,-,/,*]'
+            id='operation'
+            ref='number=1'
+            onChange={this.handleValueChange} />
+          <input
+            pattern={numericPattern}
+            title='Can only be numeric'
+            className='question-input'
+            style={{width: '75px'}}
+            id='number2'
+            ref='number2'
+            name='number2'
+            onChange={this.handleValueChange} /> ?
+          <hr />
+          Enter the correct answer
+          <br />
+          Answer:
+          <input
+            pattern={numericPattern}
+            title='Can only be numeric'
+            className='question-input'
+            style={{width: '75px'}}
+            ref='answer'
+            id='answer'
+            onChange={this.handleValueChange} />
+          <div className='distractors'>
+            <div style={{textAlign: 'center'}}>
+            Add between 1 and 5 distractors 
+              <span style={{fontSize: '2.5em'}} onClick={() => this.controlDialog(true)}><i style={{color: '#51D9FF'}} className='fa fa-plus-square' aria-hidden='true' /></span>
+            </div>
+            <div className='chip-bg'>
+              {UI.distractors.map((distractor, idx) => {
+                return <Chip key={idx} style={{marginRight: '10px'}}>{distractor}</Chip>
+              })}
+            </div>
           </div>
-          <div className='chip-bg'>
-            {UI.distractors.map((distractor, idx) => {
-              return <Chip key={idx} style={{marginRight: '10px'}}>{distractor}</Chip>
-            })}
-          </div>
-        </div>
-        <input onClick={() => {
-          this.props._questionActions.addQuestion(
-            UI.question,
-            UI.answer,
-            UI.distractors
-          )
-        }} type='submit' />
+          <input type='submit' />
+        </form>
         <Dialog open={UI.dialogOpen} onCancel={this.handleCloseDialog}>
           <DialogTitle>Add a distractor</DialogTitle>
           <DialogContent>
